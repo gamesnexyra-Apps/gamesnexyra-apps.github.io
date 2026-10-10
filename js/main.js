@@ -7,6 +7,7 @@
   const DATA = window.NEXYRA;
   const CFG = DATA.config;
   const I18N = window.NEXYRA_I18N;
+  const FX = window.NEXYRA_FX || { active: false }; // js/effects.js (GSAP + Lenis)
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -47,11 +48,11 @@
     return str.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
   }
 
-  /** Texto con marcado: {{degradado}} y [[resaltado]]. Se escapa antes de formatear. */
+  /** Texto con marcado: {{destacado}} y [[marcador]]. Se escapa antes de formatear. */
   const rich = (key) =>
     esc(t(key))
-      .replace(/\{\{(.+?)\}\}/g, '<span class="text-gradient">$1</span>')
-      .replace(/\[\[(.+?)\]\]/g, '<span class="text-nexgreen font-semibold">$1</span>');
+      .replace(/\{\{(.+?)\}\}/g, '<em class="hl">$1</em>')
+      .replace(/\[\[(.+?)\]\]/g, '<strong class="mark">$1</strong>');
 
   /** Campo de data.js: texto simple u objeto { es, en, ... }. */
   const L = (v) => {
@@ -107,12 +108,15 @@
       history.replaceState(null, "", url);
     }
 
+    FX.beforeText?.();
     applyStaticTexts();
+    renderMarquee();
     renderGames();
     applyStatuses();
     renderRoadmap();
     renderGameOptions();
     $("#formMsg").classList.add("hidden");
+    FX.afterText?.();
   }
 
   function languageSwitcher() {
@@ -165,80 +169,11 @@
   }
 
   /* ---------------------------------------------------------------------
-     Fondo de estrellas / partículas
+     Cinta de palabras (la anima effects.js: ScrollVelocity)
      --------------------------------------------------------------------- */
-  function starfield() {
-    const canvas = $("#starfield");
-    const ctx = canvas.getContext("2d");
-    const colors = ["#ffffff", "#22d3ff", "#a43cff", "#e34cff", "#39ff88", "#2f7bff"];
-    let w, h, dpr, stars = [], shooters = [];
-    const mouse = { x: 0, y: 0 };
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.width = innerWidth * dpr;
-      h = canvas.height = innerHeight * dpr;
-      const count = Math.min(260, Math.floor((innerWidth * innerHeight) / 6000));
-      stars = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        z: Math.random() * 0.9 + 0.1,
-        r: (Math.random() * 1.4 + 0.3) * dpr,
-        c: Math.random() < 0.75 ? "#ffffff" : colors[(Math.random() * colors.length) | 0],
-        t: Math.random() * Math.PI * 2,
-      }));
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-      const ox = mouse.x * 20 * dpr, oy = mouse.y * 20 * dpr;
-      const scroll = scrollY * dpr;
-
-      for (const s of stars) {
-        s.t += 0.02 * s.z;
-        const a = 0.35 + Math.sin(s.t) * 0.35 + s.z * 0.3;
-        let y = (s.y - scroll * s.z * 0.15) % h;
-        if (y < 0) y += h;
-        ctx.globalAlpha = Math.max(0, Math.min(1, a));
-        ctx.fillStyle = s.c;
-        ctx.shadowBlur = s.c === "#ffffff" ? 0 : 8 * dpr;
-        ctx.shadowColor = s.c;
-        ctx.beginPath();
-        ctx.arc(s.x + ox * s.z, y + oy * s.z, s.r * s.z, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Estrellas fugaces
-      if (Math.random() < 0.006 && shooters.length < 2) {
-        shooters.push({ x: Math.random() * w * 0.7, y: Math.random() * h * 0.4, vx: (6 + Math.random() * 6) * dpr, vy: (2 + Math.random() * 3) * dpr, life: 1 });
-      }
-      ctx.shadowBlur = 0;
-      shooters = shooters.filter((p) => {
-        const g = ctx.createLinearGradient(p.x, p.y, p.x - p.vx * 12, p.y - p.vy * 12);
-        g.addColorStop(0, `rgba(34,211,255,${p.life})`);
-        g.addColorStop(1, "rgba(164,60,255,0)");
-        ctx.globalAlpha = 1;
-        ctx.strokeStyle = g;
-        ctx.lineWidth = 2 * dpr;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p.x - p.vx * 12, p.y - p.vy * 12);
-        ctx.stroke();
-        p.x += p.vx; p.y += p.vy; p.life -= 0.012;
-        return p.life > 0 && p.x < w + 200 && p.y < h + 200;
-      });
-
-      ctx.globalAlpha = 1;
-      if (!reduceMotion) requestAnimationFrame(draw);
-    }
-
-    addEventListener("resize", resize);
-    addEventListener("pointermove", (e) => {
-      mouse.x = e.clientX / innerWidth - 0.5;
-      mouse.y = e.clientY / innerHeight - 0.5;
-    }, { passive: true });
-    resize();
-    draw();
+  function renderMarquee() {
+    const item = `<span class="marquee-item">${esc(t("marquee"))}<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-spark" /></svg></span>`;
+    $$(".marquee-track").forEach((track) => (track.innerHTML = item.repeat(6)));
   }
 
   /* ---------------------------------------------------------------------
@@ -265,7 +200,8 @@
     btn.addEventListener("click", () => setMenu(btn.getAttribute("aria-expanded") !== "true"));
     $$(".nav-link").forEach((a) => a.addEventListener("click", () => setMenu(false)));
 
-    toTop.addEventListener("click", () => scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
+    toTop.addEventListener("click", () =>
+      FX.active ? FX.scrollTo(0) : scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
 
     // Enlace activo según la sección visible
     const map = new Map($$(".nav-link").map((a) => [a.getAttribute("href").slice(1), a]));
@@ -287,22 +223,14 @@
      Portada generada (si un juego no tiene imagen)
      --------------------------------------------------------------------- */
   function generatedCover(title, seed) {
-    const palettes = [["#22d3ff", "#a43cff"], ["#39ff88", "#2f7bff"], ["#e34cff", "#2f7bff"], ["#2f7bff", "#39ff88"]];
+    const palettes = [["#d4683f", "#eeac3f"], ["#4c7a5c", "#9cc5a6"], ["#6b5bd2", "#b9aff0"], ["#b4532f", "#f2b8a0"]];
     const [a, b] = palettes[seed % palettes.length];
-    const initials = title.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>
-        <radialGradient id="r" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="${b}" stop-opacity=".45"/><stop offset="1" stop-color="#05060f" stop-opacity="0"/></radialGradient>
-        <filter id="f"><feGaussianBlur stdDeviation="6"/></filter>
-      </defs>
-      <rect width="640" height="400" fill="#07081a"/>
-      <rect width="640" height="400" fill="url(#r)"/>
-      <g stroke="${a}" stroke-opacity=".15">${Array.from({ length: 12 }, (_, i) => `<line x1="${i * 60}" y1="0" x2="${i * 60 - 200}" y2="400"/>`).join("")}</g>
-      <circle cx="320" cy="200" r="120" fill="none" stroke="url(#g)" stroke-width="4" filter="url(#f)"/>
-      <circle cx="320" cy="200" r="120" fill="none" stroke="url(#g)" stroke-width="2"/>
-      <ellipse cx="320" cy="200" rx="200" ry="50" fill="none" stroke="url(#g)" stroke-width="1.5" stroke-opacity=".6" transform="rotate(-18 320 200)"/>
-      <text x="320" y="228" text-anchor="middle" font-family="Orbitron, sans-serif" font-weight="900" font-size="84" fill="url(#g)">${esc(initials)}</text>
+    const initials = String(L(title)).split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${b}"/><stop offset="1" stop-color="${a}"/></linearGradient></defs>
+      <rect width="256" height="256" fill="url(#g)"/>
+      <circle cx="200" cy="56" r="70" fill="#fff" fill-opacity=".14"/>
+      <text x="128" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="104" fill="#fffdf9">${esc(initials)}</text>
     </svg>`;
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   }
@@ -329,31 +257,36 @@
       card.classList.toggle("is-hidden", gameFilter !== "all" && card.dataset.status !== gameFilter));
   }
 
+  // Fondo de cada tarjeta: el "color" del juego en data.js o uno de estos por orden
+  const TINTS = ["#fde4cf", "#e2eedf", "#e9e3fb", "#fadfe5", "#dcebf6", "#fcefd3"];
+
   function renderGames() {
     const grid = $("#gamesGrid");
     // Con un solo juego: sin filtros y tarjeta centrada
     const single = DATA.games.length < 2;
     $("[data-filter]").parentElement.classList.toggle("hidden", single);
-    grid.className = single ? "mx-auto grid max-w-md" : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3";
+    grid.classList.toggle("is-single", single);
+    grid.classList.toggle("is-pair", DATA.games.length === 2);
     grid.innerHTML = DATA.games
       .map((g, i) => {
         const hasLink = Boolean(g.playUrl);
         return `
-        <article class="game-card reveal" style="--d:${(i % 3) * 0.08}s" data-game="${esc(g.id)}" data-status="${normStatus(g.status)}">
+        <article class="game-card" data-spotlight data-game="${esc(g.id)}" data-status="${normStatus(g.status)}" style="--tint:${esc(g.color || TINTS[i % TINTS.length])}">
+          <span class="spot" aria-hidden="true"></span>
           <div class="game-cover">
-            ${g.tag ? `<span class="game-tag">${esc(labelOr("tag", g.tag))}</span>` : ""}
             ${badge(g.status)}
-            <img src="${coverOf(g, i)}" alt="${esc(t("card.coverAlt", { title: g.title }))}" loading="lazy" class="${g.cover ? "" : "cover-fill"}" />
+            ${g.tag ? `<span class="game-tag">${esc(labelOr("tag", g.tag))}</span>` : ""}
+            <img class="game-icon" src="${coverOf(g, i)}" alt="${esc(t("card.coverAlt", { title: L(g.title) }))}" loading="lazy" width="150" height="150" />
           </div>
-          <div class="flex flex-1 flex-col gap-3 p-6">
-            <p class="font-display text-[0.65rem] uppercase tracking-[0.2em] text-cyan">${esc(L(g.genre))}</p>
-            <h3 class="font-display text-xl font-bold text-white">${esc(L(g.title))}</h3>
-            <p class="flex-1 text-sm leading-relaxed text-silver/75">${esc(L(g.description))}</p>
-            <a class="btn-play mt-2 self-start ${hasLink ? "" : "is-disabled"}" ${hasLink ? `href="${esc(g.playUrl)}" target="_blank" rel="noopener"` : 'aria-disabled="true"'}>
-              <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
-              <span class="leading-tight">
-                <span class="block text-[0.6rem] uppercase tracking-wider opacity-70">${esc(t(hasLink ? "card.download" : "card.soon"))}</span>
-                <span class="block text-sm font-semibold">Google Play</span>
+          <div class="game-body">
+            <p class="game-genre">${esc(L(g.genre))}</p>
+            <h3 class="game-title">${esc(L(g.title))}</h3>
+            <p class="game-desc">${esc(L(g.description))}</p>
+            <a class="btn-play ${hasLink ? "" : "is-disabled"}" ${hasLink ? `href="${esc(g.playUrl)}" target="_blank" rel="noopener"` : 'aria-disabled="true"'}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
+              <span>
+                <span class="btn-play-small">${esc(t(hasLink ? "card.download" : "card.soon"))}</span>
+                <span class="btn-play-big">Google Play</span>
               </span>
             </a>
           </div>
@@ -363,25 +296,12 @@
 
     applyGameFilter();
     observeReveals(grid);
-
-    // Efecto tilt 3D + brillo que sigue al cursor
-    if (!reduceMotion && matchMedia("(hover: hover)").matches) {
-      $$(".game-card", grid).forEach((card) => {
-        card.addEventListener("pointermove", (e) => {
-          const r = card.getBoundingClientRect();
-          const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-          card.style.transform = `perspective(900px) rotateX(${(0.5 - py) * 8}deg) rotateY(${(px - 0.5) * 10}deg) translateY(-6px)`;
-          card.style.setProperty("--mx", `${px * 100}%`);
-          card.style.setProperty("--my", `${py * 100}%`);
-        });
-        card.addEventListener("pointerleave", () => (card.style.transform = ""));
-      });
-    }
+    FX.cards?.(grid);
   }
 
   function gameFilters() {
     $$("[data-filter]").forEach((chip) =>
-      chip.addEventListener("click", () => { gameFilter = chip.dataset.filter; applyGameFilter(); }));
+      chip.addEventListener("click", () => { gameFilter = chip.dataset.filter; applyGameFilter(); FX.refresh?.(); }));
   }
 
   /* ---------------------------------------------------------------------
@@ -409,12 +329,12 @@
         const st = normStatus(g.status);
         return `
         <li class="status-row">
-          <img src="${coverOf(g, i)}" alt="" class="hidden h-10 w-10 rounded-lg bg-deep object-contain sm:block" />
+          <img src="${coverOf(g, i)}" alt="" class="status-icon" width="48" height="48" />
           <div>
-            <p class="font-semibold text-white">${esc(L(g.title))}</p>
-            <p class="text-xs text-silver/60">${esc(L(g.genre))}</p>
+            <p class="status-name">${esc(L(g.title))}</p>
+            <p class="status-genre">${esc(L(g.genre))}</p>
           </div>
-          <p class="hidden text-sm text-silver/70 sm:block">${esc(t(st === "online" ? "st.onlineText" : st === "soon" ? "st.soonText" : "st.maintText"))}</p>
+          <p class="status-text">${esc(t(st === "online" ? "st.onlineText" : st === "soon" ? "st.soonText" : "st.maintText"))}</p>
           ${badge(g.status, true)}
         </li>`;
       })
@@ -472,26 +392,26 @@
 
     list.innerHTML = items
       .map((u) => `
-      <li class="tl-item reveal" data-game="${esc(u.game)}">
+      <li class="tl-item" data-game="${esc(u.game)}">
         <article class="panel tl-card">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="font-display text-[0.65rem] uppercase tracking-[0.2em] text-nexgreen">${esc(labelOr("state", u.state))}</span>
+          <div class="tl-top">
+            <span class="tl-state">${esc(labelOr("state", u.state))}</span>
             <span class="countdown">${esc(countdown(u.date))}</span>
           </div>
-          <h3 class="mt-3 font-display text-xl font-bold text-white">${esc(L(u.game))} <span class="text-gradient">${esc(L(u.version))}</span></h3>
-          <p class="mt-1 text-sm text-silver/60">
+          <h3 class="tl-title">${esc(L(u.game))} <span class="tl-version">${esc(L(u.version))}</span></h3>
+          <p class="tl-eta">
             ${esc(t("updates.eta"))} ${u.date
-              ? `<time datetime="${esc(u.date)}" class="text-silver">${fmt.format(new Date(u.date + "T00:00:00"))}</time>`
-              : `<span class="text-silver">${esc(t("updates.tba"))}</span>`}
+              ? `<time datetime="${esc(u.date)}">${fmt.format(new Date(u.date + "T00:00:00"))}</time>`
+              : `<strong>${esc(t("updates.tba"))}</strong>`}
           </p>
           ${typeof u.progress === "number" ? `
-          <div class="mt-4 flex items-center gap-3">
-            <div class="progress flex-1" role="progressbar" aria-valuenow="${u.progress}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(t("updates.progress"))}">
+          <div class="progress-row">
+            <div class="progress" role="progressbar" aria-valuenow="${u.progress}" aria-valuemin="0" aria-valuemax="100" aria-label="${esc(t("updates.progress"))}">
               <span data-progress="${Math.max(0, Math.min(100, u.progress))}"></span>
             </div>
-            <span class="font-display text-xs text-silver/70">${u.progress}%</span>
+            <span class="progress-num">${u.progress}%</span>
           </div>` : ""}
-          <ul class="mt-5 space-y-3">
+          <ul class="chg-list">
             ${u.items.map((it) => `
               <li class="chg">
                 <span class="chg-type chg-${esc(it.type)}">${esc(labelOr("type", it.type))}</span>
@@ -519,6 +439,7 @@
       if (!chip) return;
       roadmapFilter = chip.dataset.rgame;
       applyRoadmapFilter();
+      FX.refresh?.();
     });
   }
 
@@ -535,6 +456,7 @@
     $$("[data-count]").forEach((el) => {
       const end = values[el.dataset.count];
       if (countersShown || reduceMotion) { el.textContent = end; return; }
+      if (FX.active) { FX.countTo(el, end); return; } // CountUp de effects.js
       const t0 = performance.now();
       const tick = (now) => {
         const p = Math.min(1, (now - t0) / 1200);
@@ -549,20 +471,20 @@
   /* ---------------------------------------------------------------------
      Comunidad
      --------------------------------------------------------------------- */
-  const BRAND = { discord: "#5865F2", x: "#ffffff", youtube: "#ff0033", tiktok: "#22d3ff" };
+  const BRAND = { discord: "#5865F2", x: "#1d1a22", youtube: "#e0002b", tiktok: "#e2335a" };
   function renderSocial() {
     $("#socialList").innerHTML = DATA.social
       .map((s) => `
       <li>
-        <a class="social-link" href="${esc(s.url)}" target="_blank" rel="noopener" style="--brand:${BRAND[s.icon] || "#22d3ff"}">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-${esc(s.icon)}" /></svg>
-          <span class="text-sm font-medium">${esc(s.name)}</span>
+        <a class="social-link" href="${esc(s.url)}" target="_blank" rel="noopener" style="--brand:${BRAND[s.icon] || "#d4683f"}">
+          <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-${esc(s.icon)}" /></svg></span>
+          <span>${esc(s.name)}</span>
         </a>
       </li>`)
       .join("");
     const mail = $("#supportMail");
     mail.href = "mailto:" + CFG.supportEmail;
-    mail.textContent = CFG.supportEmail;
+    $("span", mail).textContent = CFG.supportEmail;
   }
 
   /* ---------------------------------------------------------------------
@@ -586,9 +508,7 @@
 
     const show = (text, ok) => {
       msg.textContent = text;
-      msg.className = "mt-4 rounded-lg px-4 py-3 text-sm " +
-        (ok ? "bg-[rgba(57,255,136,.1)] text-nexgreen border border-[rgba(57,255,136,.4)]"
-            : "bg-[rgba(255,59,92,.1)] text-[#ff8da1] border border-[rgba(255,59,92,.4)]");
+      msg.className = "form-msg " + (ok ? "is-ok" : "is-err");
     };
 
     const validate = (el) => {
@@ -662,20 +582,22 @@
   }
 
   /* ---------------------------------------------------------------------
-     Animaciones al hacer scroll
+     Apariciones al hacer scroll (con GSAP en effects.js; sin él, todo visible)
      --------------------------------------------------------------------- */
-  const revealIO = new IntersectionObserver(
+  const fillBars = (el) => $$("[data-progress]", el).forEach((bar) => (bar.style.width = bar.dataset.progress + "%"));
+
+  const barIO = new IntersectionObserver(
     (entries) => entries.forEach((e) => {
       if (!e.isIntersecting) return;
-      e.target.classList.add("is-visible");
-      $$("[data-progress]", e.target).forEach((bar) => (bar.style.width = bar.dataset.progress + "%"));
-      revealIO.unobserve(e.target);
+      fillBars(e.target.parentElement);
+      barIO.unobserve(e.target);
     }),
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.3 }
   );
 
   function observeReveals(root = document) {
-    $$(".reveal:not(.is-visible)", root).forEach((el) => revealIO.observe(el));
+    if (FX.active) return FX.reveal(root, fillBars);
+    $$("[data-progress]", root).forEach((bar) => barIO.observe(bar));
   }
 
   /* ---------------------------------------------------------------------
@@ -683,10 +605,8 @@
      --------------------------------------------------------------------- */
   document.addEventListener("DOMContentLoaded", () => {
     $("#year").textContent = new Date().getFullYear();
-    $$("#inicio .reveal").forEach((el, i) => el.style.setProperty("--d", `${i * 0.1}s`));
 
     lang = detectLang();
-    starfield();
     navigation();
     languageSwitcher();
     gameFilters();
@@ -697,5 +617,6 @@
     pollStatus();
     observeReveals();
     if (CFG.statusEndpoint) setInterval(pollStatus, Math.max(15, CFG.statusRefreshSeconds) * 1000);
+    FX.boot?.();
   });
 })();

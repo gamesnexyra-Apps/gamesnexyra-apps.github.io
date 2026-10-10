@@ -44,7 +44,8 @@ window.NEXYRA = {
 
   // status: "online" | "maintenance"
   // tag: "new" | "soon" | "inDev" | "workingTitle" (traducidos automáticamente) o texto libre
-  // cover: ruta a imagen. Si lo dejas vacío se genera una portada neón automática.
+  // cover: ruta a imagen (se ve como icono de app). Vacío = icono automático con las iniciales.
+  // color: opcional, fondo de la tarjeta (p. ej. "#fde4cf"). Vacío = uno cálido por orden.
   games: [
     {
       id: "petmath",

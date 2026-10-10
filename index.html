@@ -1,67 +1,50 @@
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NEXYRA GAMES · Experiencias móviles épicas</title>
-  <meta name="description" content="NEXYRA GAMES: desarrolladora de videojuegos para Android en Google Play. Catálogo, estado de los juegos, roadmap de actualizaciones y soporte." />
-  <meta name="theme-color" content="#05060f" />
+  <title>NEXYRA GAMES · Juegos con cariño para toda la familia</title>
+  <meta name="description" content="NEXYRA GAMES es un pequeño estudio independiente que crea juegos para móviles pensados para peques y familias. Catálogo, estado de los juegos, novedades y soporte." />
+  <meta name="theme-color" content="#fbf6ee" />
   <link rel="icon" type="image/png" href="assets/img/nexyra-emblem.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="NEXYRA GAMES" />
-  <meta property="og:description" content="Creamos experiencias móviles épicas." />
+  <meta property="og:description" content="Juegos para móviles hechos con cariño, para peques y familias." />
   <meta property="og:image" content="assets/img/nexyra-emblem.png" />
+
+  <!-- Animaciones: solo si el usuario no pide movimiento reducido.
+       Si GSAP no llega a cargar, a los 2,5 s se muestra todo sin animar. -->
+  <script>
+    (function () {
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var root = document.documentElement;
+      root.classList.add("fx");
+      setTimeout(function () { if (!window.__fxReady) root.classList.remove("fx"); }, 2500);
+    })();
+  </script>
 
   <!-- Fuentes (Noto Sans JP se carga solo al elegir japonés) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Nunito+Sans:ital,opsz,wght@0,6..12,400..800;1,6..12,400..800&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            void: "#05060f",
-            deep: "#0b0d1f",
-            electric: "#2f7bff",
-            cyan: "#22d3ff",
-            stellar: "#a43cff",
-            magenta: "#e34cff",
-            nexgreen: "#39ff88",
-            silver: "#d8dcf0",
-          },
-          fontFamily: {
-            display: ["Orbitron", '"Noto Sans JP"', "sans-serif"],
-            body: ['"Exo 2"', '"Noto Sans JP"', "system-ui", "sans-serif"],
-          },
-        },
-      },
-    };
-  </script>
+  <!-- Lenis (scroll suave) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
-<body class="bg-void text-silver font-body antialiased">
+<body>
   <a href="#main" class="skip-link" data-i18n="skip">Saltar al contenido</a>
 
-  <!-- Fondo estelar (canvas) -->
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="bg-grid" aria-hidden="true"></div>
-
-  <!-- ===================== HEADER / NAVBAR ===================== -->
-  <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-    <nav class="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8" aria-label="Principal">
-      <a href="#inicio" class="logo group flex items-center gap-3" data-i18n-attr="aria-label:logo.home" aria-label="NEXYRA GAMES, ir al inicio">
-        <span class="logo-ring">
-          <img src="assets/img/nexyra-emblem.png" alt="" class="h-11 w-11 sm:h-12 sm:w-12" />
-        </span>
-        <span class="hidden flex-col leading-none sm:flex">
-          <span class="font-display text-lg font-black tracking-[0.18em] text-chrome">NEXYRA</span>
-          <span class="font-display text-[0.6rem] tracking-[0.55em] text-cyan">GAMES</span>
+  <!-- ===================== CABECERA ===================== -->
+  <header id="navbar" class="nav">
+    <nav class="container nav-inner" aria-label="Principal">
+      <a href="#inicio" class="logo" data-i18n-attr="aria-label:logo.home" aria-label="NEXYRA GAMES, ir al inicio">
+        <img src="assets/img/nexyra-emblem.png" alt="" width="44" height="44" />
+        <span class="logo-text">
+          <span class="logo-name">NEXYRA</span>
+          <span class="logo-sub">GAMES</span>
         </span>
       </a>
 
@@ -69,29 +52,26 @@
         <li><a href="#inicio" class="nav-link" data-i18n="nav.home">Inicio</a></li>
         <li><a href="#juegos" class="nav-link" data-i18n="nav.games">Juegos</a></li>
         <li><a href="#estado" class="nav-link" data-i18n="nav.status">Estado</a></li>
-        <li><a href="#actualizaciones" class="nav-link" data-i18n="nav.updates">Actualizaciones</a></li>
+        <li><a href="#actualizaciones" class="nav-link" data-i18n="nav.updates">Novedades</a></li>
         <li><a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
       </ul>
 
-      <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Selector de idioma -->
+      <div class="nav-actions">
         <div class="lang-switch" id="langSwitch">
           <button id="langBtn" class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu"
                   data-i18n-attr="aria-label:nav.lang" aria-label="Idioma">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/>
-            </svg>
-            <span id="langCode" class="font-display text-[0.7rem] tracking-widest">ES</span>
-            <svg class="lang-chevron h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-globe" /></svg>
+            <span id="langCode">ES</span>
+            <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <ul id="langMenu" class="lang-menu" hidden></ul>
         </div>
 
-        <a data-play-profile href="#" target="_blank" rel="noopener" class="btn-ghost hidden xl:inline-flex">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
+        <a data-play-profile href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm nav-play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
           Google Play
         </a>
-        <button id="menuBtn" class="menu-btn lg:hidden" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <button id="menuBtn" class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -99,129 +79,190 @@
   </header>
 
   <main id="main">
-    <!-- ===================== HERO ===================== -->
-    <section id="inicio" class="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
-        <div class="text-center lg:text-left">
-          <p class="reveal eyebrow mx-auto lg:mx-0">
-            <span class="pulse-dot"></span> <span data-i18n="hero.eyebrow">Desarrolladora indie · Google Play</span>
+    <!-- ===================== PORTADA ===================== -->
+    <section id="inicio" class="hero">
+      <div class="hero-blobs" aria-hidden="true">
+        <span class="blob blob-1"></span><span class="blob blob-2"></span><span class="blob blob-3"></span>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-intro="eyebrow">
+            <span class="pulse-dot"></span> <span data-i18n="hero.eyebrow">Estudio indie · Juegos para toda la familia</span>
           </p>
-          <h1 class="reveal mt-6 font-display font-black leading-[0.95]">
-            <span class="hero-title block text-[clamp(2.8rem,9vw,6.5rem)]" data-text="NEXYRA">NEXYRA</span>
-            <span class="mt-2 block text-[clamp(1rem,3vw,1.6rem)] tracking-[0.8em] text-cyan">GAMES</span>
-          </h1>
-          <p class="reveal mx-auto mt-8 max-w-xl text-lg text-silver/80 sm:text-xl lg:mx-0" data-i18n-rich="hero.sub">
-            Forjamos <span class="text-nexgreen font-semibold">experiencias móviles épicas</span>:
-            mundos que caben en tu bolsillo y se quedan en tu memoria. Diseñados con pasión, pulidos píxel a píxel.
+          <h1 class="hero-title" data-intro="title" data-split data-i18n-rich="hero.title">Juegos hechos con <em class="hl">cariño</em> para disfrutar en familia</h1>
+          <p class="hero-sub" data-intro="sub" data-i18n-rich="hero.sub">
+            Somos un pequeño estudio independiente. Creamos juegos para móviles <strong class="mark">sencillos, bonitos y seguros</strong>,
+            para que los peques aprendan jugando y los mayores estén tranquilos.
           </p>
-          <div class="reveal mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
-            <a data-play-profile href="#" target="_blank" rel="noopener" class="btn-primary">
-              <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
-              <span class="text-left leading-tight">
-                <span class="block text-[0.65rem] uppercase tracking-widest opacity-80" data-i18n="cta.available">Disponible en</span>
-                <span class="block font-display text-base">Google Play</span>
-              </span>
+          <div class="hero-ctas" data-intro="ctas">
+            <a href="#juegos" class="btn btn-primary" data-magnet>
+              <span data-i18n="hero.explore">Ver nuestros juegos</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-arrow-down" /></svg>
             </a>
-            <a href="#juegos" class="btn-ghost"><span data-i18n="hero.explore">Explorar juegos</span>
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            <a data-play-profile href="#" target="_blank" rel="noopener" class="btn btn-outline" data-magnet>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
+              <span class="btn-stack"><span class="btn-kicker" data-i18n="cta.available">Disponible en</span> Google Play</span>
             </a>
           </div>
 
-          <dl class="reveal mt-14 grid grid-cols-3 gap-4 text-center lg:text-left">
+          <dl class="stats" data-intro="stats">
             <div class="stat"><dt data-i18n="stat.games">Juegos</dt><dd data-count="games">0</dd></div>
-            <div class="stat"><dt data-i18n="stat.online">Online</dt><dd data-count="online">0</dd></div>
-            <div class="stat"><dt data-i18n="stat.patches">Parches en camino</dt><dd data-count="patches">0</dd></div>
+            <div class="stat"><dt data-i18n="stat.online">Disponibles</dt><dd data-count="online">0</dd></div>
+            <div class="stat"><dt data-i18n="stat.patches">Novedades en camino</dt><dd data-count="patches">0</dd></div>
           </dl>
         </div>
 
-        <div class="reveal relative mx-auto w-full max-w-sm sm:max-w-md">
-          <div class="emblem-orbit" aria-hidden="true"></div>
-          <img src="assets/img/nexyra-emblem.png" alt="Emblema de NEXYRA GAMES" data-i18n-attr="alt:hero.emblemAlt" class="emblem-hero relative z-10 w-full" />
+        <div class="hero-art" data-intro="art">
+          <div class="arch">
+            <span class="arch-hill" aria-hidden="true"></span>
+            <img src="assets/img/nexyra-emblem.png" alt="Emblema de NEXYRA GAMES" data-i18n-attr="alt:hero.emblemAlt" class="arch-emblem" width="1254" height="1254" />
+          </div>
+          <span class="float-chip chip-a" data-float>
+            <span class="chip-ico tone-terra"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-brush" /></svg></span>
+            <span data-i18n="chip.color">Colorear</span>
+          </span>
+          <span class="float-chip chip-b" data-float>
+            <span class="chip-ico tone-sage"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-paw" /></svg></span>
+            <span data-i18n="chip.pets">Mascotas</span>
+          </span>
+          <span class="float-chip chip-c" data-float>
+            <span class="chip-ico tone-honey"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-bulb" /></svg></span>
+            <span data-i18n="chip.learn">Aprender jugando</span>
+          </span>
         </div>
       </div>
-
-      <a href="#juegos" class="scroll-hint" aria-label="Bajar a juegos" data-i18n-attr="aria-label:hero.scroll"><span></span></a>
     </section>
+
+    <!-- ===================== CINTA (ScrollVelocity) ===================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-row"><div class="marquee-track" data-velocity="1"></div></div>
+      <div class="marquee-row is-alt"><div class="marquee-track" data-velocity="-1"></div></div>
+    </div>
 
     <!-- ===================== JUEGOS ===================== -->
     <section id="juegos" class="section">
-      <div class="section-inner">
-        <header class="section-head reveal">
-          <p class="section-kicker" data-i18n="games.kicker">// Catálogo Play Store</p>
-          <h2 class="section-title" data-i18n-rich="games.title">Nuestros <span class="text-gradient">juegos</span></h2>
-          <p class="section-sub" data-i18n="games.sub">Cada título, una galaxia distinta. Toca una tarjeta y llévatela a tu móvil.</p>
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="kicker" data-i18n="games.kicker">Nuestros juegos</p>
+          <h2 class="section-title" data-i18n-rich="games.title">Pequeños mundos <em class="hl">para jugar juntos</em></h2>
+          <p class="section-sub" data-i18n="games.sub">Cada juego nace de una idea sencilla y se pule con calma. Toca una tarjeta y llévatelo a tu móvil.</p>
         </header>
 
-        <div class="reveal mb-8 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Filtrar juegos" data-i18n-attr="aria-label:filter.label">
+        <div class="chips" role="tablist" aria-label="Filtrar juegos" data-i18n-attr="aria-label:filter.label" data-reveal>
           <button class="chip is-active" data-filter="all" role="tab" aria-selected="true" data-i18n="filter.all">Todos</button>
           <button class="chip" data-filter="online" role="tab" aria-selected="false" data-i18n="filter.online">Online</button>
           <button class="chip" data-filter="maintenance" role="tab" aria-selected="false" data-i18n="filter.maintenance">En mantenimiento</button>
           <button class="chip" data-filter="soon" role="tab" aria-selected="false" data-i18n="tag.soon">Próximamente</button>
         </div>
 
-        <div id="gamesGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+        <div id="gamesGrid" class="games-grid" data-stagger></div>
+      </div>
+    </section>
+
+    <!-- ===================== MANIFIESTO (ScrollReveal) ===================== -->
+    <section class="statement" aria-labelledby="statementText">
+      <div class="container">
+        <span class="statement-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><use href="#ico-heart" /></svg>
+        </span>
+        <p id="statementText" class="statement-text" data-scroll-reveal data-i18n="about.statement">
+          Creemos que una pantalla también puede ser un lugar tranquilo: juegos sin prisas ni trucos, cuidados hasta el último detalle, para que jugar en familia sea siempre un buen momento.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== CÓMO TRABAJAMOS ===================== -->
+    <section id="valores" class="section section-tint">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="kicker" data-i18n="values.kicker">Cómo trabajamos</p>
+          <h2 class="section-title" data-i18n-rich="values.title">Pequeños detalles que <em class="hl">dan confianza</em></h2>
+        </header>
+        <div class="values-grid" data-stagger>
+          <article class="value-card">
+            <span class="value-icon tone-honey"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-smile" /></svg></span>
+            <h3 data-i18n="values.1t">Pensados para peques</h3>
+            <p data-i18n="values.1d"></p>
+          </article>
+          <article class="value-card">
+            <span class="value-icon tone-sage"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-shield" /></svg></span>
+            <h3 data-i18n="values.2t">Sin trucos ni sorpresas</h3>
+            <p data-i18n="values.2d"></p>
+          </article>
+          <article class="value-card">
+            <span class="value-icon tone-terra"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-home" /></svg></span>
+            <h3 data-i18n="values.3t">Hechos con calma</h3>
+            <p data-i18n="values.3d"></p>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- ===================== ESTADO ===================== -->
     <section id="estado" class="section">
-      <div class="section-inner">
-        <header class="section-head reveal">
-          <p class="section-kicker" data-i18n="status.kicker">// Monitor en vivo</p>
-          <h2 class="section-title" data-i18n-rich="status.title">Estado de <span class="text-gradient">servidores y juegos</span></h2>
-          <p class="section-sub" data-i18n="status.sub">Consulta si algún título está en mantenimiento antes de abrir un ticket.</p>
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="kicker" data-i18n="status.kicker">Estado</p>
+          <h2 class="section-title" data-i18n-rich="status.title">¿Cómo están <em class="hl">nuestros juegos</em>?</h2>
+          <p class="section-sub" data-i18n="status.sub">Si algo no funciona como debería, aquí lo verás antes de tener que escribirnos.</p>
         </header>
 
-        <div class="reveal panel overflow-hidden">
-          <div class="flex flex-col gap-3 border-b border-white/10 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <div class="flex items-center gap-3">
+        <div class="panel status-panel" data-reveal>
+          <div class="status-head">
+            <div class="status-global">
               <span id="globalDot" class="status-dot"></span>
-              <p id="globalStatus" class="font-display text-sm tracking-wider" data-i18n="status.checking">Comprobando sistemas…</p>
+              <p id="globalStatus" data-i18n="status.checking">Comprobando…</p>
             </div>
-            <p class="text-xs text-silver/60"><span data-i18n="status.lastCheck">Última comprobación:</span> <time id="lastCheck">—</time></p>
+            <p class="status-time"><span data-i18n="status.lastCheck">Última comprobación:</span> <time id="lastCheck">—</time></p>
           </div>
-          <ul id="statusList" class="divide-y divide-white/5"></ul>
+          <ul id="statusList" class="status-list"></ul>
         </div>
       </div>
     </section>
 
-    <!-- ===================== ROADMAP ===================== -->
-    <section id="actualizaciones" class="section">
-      <div class="section-inner">
-        <header class="section-head reveal">
-          <p class="section-kicker" data-i18n="updates.kicker">// Roadmap · Changelog</p>
-          <h2 class="section-title" data-i18n-rich="updates.title">Próximas <span class="text-gradient">actualizaciones</span></h2>
-          <p class="section-sub" data-i18n="updates.sub">Lo que estamos construyendo ahora mismo. Las fechas son estimadas y pueden cambiar.</p>
+    <!-- ===================== NOVEDADES ===================== -->
+    <section id="actualizaciones" class="section section-tint">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="kicker" data-i18n="updates.kicker">Novedades</p>
+          <h2 class="section-title" data-i18n-rich="updates.title">Lo que estamos <em class="hl">preparando</em></h2>
+          <p class="section-sub" data-i18n="updates.sub">Funciones, contenido y mejoras en los que trabajamos ahora mismo. Las fechas son orientativas y pueden cambiar.</p>
         </header>
 
-        <div id="roadmapFilters" class="reveal mb-10 flex flex-wrap justify-center gap-2"></div>
-        <ol id="roadmap" class="timeline"></ol>
+        <div id="roadmapFilters" class="chips" data-reveal></div>
+        <div class="timeline-wrap">
+          <span class="tl-line" aria-hidden="true"><span class="tl-fill"></span></span>
+          <ol id="roadmap" class="timeline" data-stagger></ol>
+        </div>
       </div>
     </section>
 
     <!-- ===================== CONTACTO ===================== -->
     <section id="contacto" class="section">
-      <div class="section-inner grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div class="reveal">
-          <p class="section-kicker" data-i18n="contact.kicker">// Comunidad</p>
-          <h2 class="section-title text-left" data-i18n-rich="contact.title">Únete a la <span class="text-gradient">tripulación</span></h2>
-          <p class="mt-4 text-silver/75" data-i18n="contact.sub">
-            Sigue el desarrollo, comparte tus capturas, vota nuevas funciones y entérate antes que nadie de cada lanzamiento.
+      <div class="container contact-grid">
+        <div class="contact-copy" data-reveal>
+          <p class="kicker" data-i18n="contact.kicker">Contacto</p>
+          <h2 class="section-title" data-i18n-rich="contact.title">Estamos <em class="hl">a un mensaje</em></h2>
+          <p class="section-sub" data-i18n="contact.sub">
+            ¿Tienes una duda, una idea o algo no va bien? Escríbenos: leemos cada mensaje y respondemos personalmente.
           </p>
-          <ul id="socialList" class="mt-8 grid grid-cols-2 gap-3"></ul>
+          <ul id="socialList" class="social-list"></ul>
 
-          <div class="panel mt-8 p-5">
-            <p class="font-display text-sm tracking-wider text-nexgreen" data-i18n="support.title">SOPORTE TÉCNICO</p>
-            <p class="mt-2 text-sm text-silver/75" data-i18n="support.text">
+          <div class="support-card">
+            <h3 class="support-title" data-i18n="support.title">Soporte</h3>
+            <p class="support-text" data-i18n="support.text">
               Respondemos en 24–48 h laborables. Incluye tu modelo de móvil, versión de Android y del juego para ayudarte más rápido.
             </p>
-            <a id="supportMail" class="mt-3 inline-block text-cyan hover:text-nexgreen" href="#"></a>
+            <a id="supportMail" class="support-mail" href="#">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-mail" /></svg>
+              <span></span>
+            </a>
           </div>
         </div>
 
-        <form id="contactForm" class="reveal panel p-6 sm:p-8" novalidate>
-          <div class="grid gap-5 sm:grid-cols-2">
+        <form id="contactForm" class="panel form-card" novalidate data-reveal>
+          <div class="form-grid">
             <div class="field">
               <label for="f-name" data-i18n="form.name">Nombre</label>
               <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" />
@@ -252,37 +293,53 @@
               </select>
               <p class="field-error" data-i18n="err.topic">Elige un motivo.</p>
             </div>
-            <div class="field sm:col-span-2">
-              <label for="f-device"><span data-i18n="form.device">Dispositivo y versión de Android</span> <span class="text-silver/50" data-i18n="form.optional">(opcional)</span></label>
+            <div class="field span-2">
+              <label for="f-device"><span data-i18n="form.device">Dispositivo y versión de Android</span> <span class="optional" data-i18n="form.optional">(opcional)</span></label>
               <input id="f-device" name="device" type="text" placeholder="Ej. Samsung Galaxy A54 · Android 14" data-i18n-attr="placeholder:form.devicePh" maxlength="120" />
             </div>
-            <div class="field sm:col-span-2">
+            <div class="field span-2">
               <label for="f-msg" data-i18n="form.message">Mensaje</label>
               <textarea id="f-msg" name="message" rows="5" required minlength="10" maxlength="2000"></textarea>
               <p class="field-error" data-i18n="err.message">Cuéntanos un poco más (mín. 10 caracteres).</p>
             </div>
           </div>
-          <label class="mt-5 flex items-start gap-3 text-sm text-silver/75">
-            <input id="f-ok" type="checkbox" required class="mt-1 accent-[#39ff88]" />
+          <label class="consent">
+            <input id="f-ok" type="checkbox" required />
             <span data-i18n="form.consent">Acepto que NEXYRA GAMES use estos datos solo para responder a mi consulta.</span>
           </label>
-          <button type="submit" class="btn-primary mt-6 w-full justify-center">
-            <span class="btn-label font-display" data-i18n="form.send">Enviar ticket</span>
+          <button type="submit" class="btn btn-primary btn-block">
+            <span class="btn-label" data-i18n="form.send">Enviar mensaje</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-send" /></svg>
           </button>
-          <p id="formMsg" class="mt-4 hidden rounded-lg px-4 py-3 text-sm" role="status" aria-live="polite"></p>
+          <p id="formMsg" class="form-msg hidden" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="relative border-t border-white/10 py-10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-sm text-silver/60 sm:flex-row sm:px-6 lg:px-8">
-      <div class="flex items-center gap-3">
-        <img src="assets/img/nexyra-emblem.png" alt="" class="h-8 w-8" />
-        <span>© <span id="year"></span> NEXYRA GAMES. <span data-i18n="footer.rights">Todos los derechos reservados.</span></span>
+  <!-- ===================== PIE ===================== -->
+  <footer class="footer">
+    <svg class="footer-wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 48V28C180 6 360 0 540 14s360 34 540 26 270-30 360-34V48Z" fill="currentColor" />
+    </svg>
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <img src="assets/img/nexyra-emblem.png" alt="" width="56" height="56" />
+        <div>
+          <p class="footer-name">NEXYRA GAMES</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">Juegos para móviles hechos con cariño, para peques y familias.</p>
+        </div>
       </div>
-      <p class="text-xs" data-i18n="footer.google">Google Play y el logotipo de Google Play son marcas de Google LLC.</p>
+      <ul class="footer-links">
+        <li><a href="#juegos" data-i18n="nav.games">Juegos</a></li>
+        <li><a href="#actualizaciones" data-i18n="nav.updates">Novedades</a></li>
+        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+        <li><a href="pintipop/privacidad.html" data-i18n="footer.privacy">Privacidad de Pintipop</a></li>
+      </ul>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> NEXYRA GAMES. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+      <p data-i18n="footer.google">Google Play y el logotipo de Google Play son marcas de Google LLC.</p>
     </div>
   </footer>
 
@@ -291,7 +348,7 @@
   </button>
 
   <!-- ===================== ICONOS SVG ===================== -->
-  <svg width="0" height="0" class="absolute" aria-hidden="true">
+  <svg width="0" height="0" class="sprite" aria-hidden="true">
     <symbol id="ico-play" viewBox="0 0 24 24">
       <path fill="#00d7fe" d="M3.6 1.8 13.3 11.5 3.6 21.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1Z"/>
       <path fill="#ffce00" d="m16.6 8.2-3.3 3.3 3.3 3.3 3.8-2.2c1.1-.6 1.1-1.6 0-2.2l-3.8-2.2Z"/>
@@ -302,10 +359,29 @@
     <symbol id="ico-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 2.5h3.3l-7.2 8.2 8.4 11.1h-6.6l-5.2-6.8-5.9 6.8H1.3l7.7-8.8L1 2.5h6.8l4.7 6.2 5.3-6.2Zm-1.2 17.4h1.8L6.5 4.3H4.5l12.1 15.6Z"/></symbol>
     <symbol id="ico-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></symbol>
     <symbol id="ico-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.7V9.5a6.3 6.3 0 1 0 5.4 6.2V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9l-1-.2Z"/></symbol>
+    <symbol id="ico-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></g></symbol>
+    <symbol id="ico-arrow-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="ico-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="ico-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></g></symbol>
+    <symbol id="ico-brush" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18.6 2.9a2 2 0 0 1 2.8 2.8l-8.9 9.4-3.2-3.2 9.3-9Z"/><path d="M8.4 13.1c-2 0-3.5 1.6-3.5 3.6 0 1.4-.7 2.3-1.9 2.8 1 .9 2.5 1.4 4 1.4 2.8 0 4.8-2 4.8-4.6l-3.4-3.2Z"/></g></symbol>
+    <symbol id="ico-paw" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.8" cy="10.4" r="1.9"/><circle cx="9.6" cy="5.8" r="1.9"/><circle cx="14.4" cy="5.8" r="1.9"/><circle cx="18.2" cy="10.4" r="1.9"/><path d="M12 11.6c-2.6 0-5 3.2-5 5.6 0 1.6 1.2 2.4 2.6 2.4 1 0 1.6-.5 2.4-.5s1.4.5 2.4.5c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.4-5.6-5-5.6Z"/></g></symbol>
+    <symbol id="ico-bulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 17.5h5.6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.7 10.7c.8.7 1.2 1.5 1.2 2.4v.4h5v-.4c0-.9.4-1.7 1.2-2.4A6 6 0 0 0 12 3Z"/></g></symbol>
+    <symbol id="ico-smile" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.3 14.2a4.6 4.6 0 0 0 7.4 0"/><path d="M9 9.6h.01M15 9.6h.01" stroke-width="2.6"/></g></symbol>
+    <symbol id="ico-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 19 6v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6l7-3Z"/><path d="m9 12 2.1 2.1L15.2 10"/></g></symbol>
+    <symbol id="ico-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.6 12 4l8.5 6.6V20a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-9.4Z"/><path d="M12 17.6s-3-1.8-3-4a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2.2-3 4-3 4Z"/></g></symbol>
+    <symbol id="ico-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.5S3.5 15.4 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 6.2-8.5 11.3-8.5 11.3Z"/></symbol>
+    <symbol id="ico-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3c.7 5 3.9 8.3 9 9-5.1.7-8.3 4-9 9-.7-5-3.9-8.3-9-9 5.1-.7 8.3-4 9-9Z"/></symbol>
   </svg>
+
+  <!-- Librerías: GSAP (ScrollTrigger, SplitText) y Lenis, versiones fijas desde jsDelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 
   <script src="js/data.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/effects.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

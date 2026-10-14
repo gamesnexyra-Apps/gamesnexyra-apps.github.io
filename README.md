@@ -2,15 +2,19 @@
 
 Web estática (HTML + CSS + JavaScript). No necesita compilación: se sube tal cual.
 
-Estilo cálido y profesional (papel crema, terracota, miel y salvia; tipografías Fraunces y
-Nunito Sans). Movimiento con **GSAP 3.15** (ScrollTrigger y SplitText), scroll suave con
+Estudio indie para todos los públicos: estilo oscuro y cósmico con los azules, violetas y magentas
+del emblema (tipografías Sora e Inter). Movimiento con **GSAP 3.15** (ScrollTrigger y SplitText), scroll suave con
 **Lenis 1.3** y efectos de **React Bits** pasados a JavaScript sin React (`js/effects.js`).
 
 ## Estructura
 
 ```
 index.html            Estructura de la página
-css/styles.css        Estilos (colores en :root, tarjetas, timeline, formulario…)
+css/styles.css        Estilos de la portada (colores en :root, tarjetas, timeline, formulario…)
+css/page.css          Estilos de las páginas interiores (fichas de juego y políticas)
+bolitas/              Ficha de Bolitas (index.html, es/en) y su política de privacidad (privacidad.html)
+pintipop/privacidad.html  Política de privacidad de Pintipop (no cambiar la dirección: la usa Google Play)
+privacidad/           Índice de políticas de privacidad de todos los juegos
 js/data.js            ← CONTENIDO EDITABLE: enlaces, juegos, estado, roadmap, redes
 js/i18n.js            ← TEXTOS DE LA INTERFAZ en 7 idiomas
 js/main.js            Interactividad (menú, idiomas, filtros, estado, roadmap, formulario)
@@ -35,7 +39,7 @@ y visita http://localhost:8080
 1. **Perfil de Play Store**: `config.playStoreProfile` → `https://play.google.com/store/apps/dev?id=TU_ID`.
 2. **Correo de soporte**: `config.supportEmail`.
 3. **Formulario**: sin backend abre el correo del usuario con el ticket relleno. Para recibirlo directamente, crea un formulario en Formspree (o similar) y pon su URL en `config.formEndpoint`.
-4. **Juegos**: añade objetos a `games`. `status`: `"online"`, `"maintenance"` o `"soon"` (anunciado, aún sin publicar: insignia «Próximamente» y no cuenta en el monitor de estado). `cover` se muestra como icono de app (si está vacío se genera uno con las iniciales) y `color` (opcional) es el fondo de su tarjeta. Si `playUrl` está vacío el botón aparece como «Muy pronto».
+4. **Juegos**: añade objetos a `games`. `status`: `"online"`, `"maintenance"` o `"soon"` (anunciado, aún sin publicar: insignia «Próximamente» y no cuenta en el monitor de estado). `page` y `privacy` (opcionales) añaden a la tarjeta los enlaces «Ver juego» y «Privacidad». `cover` se muestra como icono de app (si está vacío se genera uno con las iniciales) y `color` (opcional) es el fondo de su tarjeta. Si `playUrl` está vacío el botón aparece como «Muy pronto».
 5. **Estado en tiempo real**: sube un JSON como `status.example.json` (al mismo hosting, un Gist raw, etc.) y pon su URL en `config.statusEndpoint`. La web lo vuelve a leer cada `statusRefreshSeconds` y actualiza tarjetas y monitor sin recargar.
 6. **Roadmap**: entradas en `roadmap` con `date` en formato `AAAA-MM-DD`; la cuenta atrás y el orden se calculan solos. Con `date: ""` la entrada sale al final como «Sin fecha» / «fecha por anunciar»; `progress` es opcional.
 7. **Redes**: cambia las URL en `social`.

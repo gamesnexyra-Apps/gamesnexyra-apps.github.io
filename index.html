@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NEXYRA GAMES · Juegos con cariño para toda la familia</title>
-  <meta name="description" content="NEXYRA GAMES es un pequeño estudio independiente que crea juegos para móviles pensados para peques y familias. Catálogo, estado de los juegos, novedades y soporte." />
-  <meta name="theme-color" content="#fbf6ee" />
+  <title>NEXYRA GAMES · Estudio indie de juegos para móviles</title>
+  <meta name="description" content="NEXYRA GAMES es un estudio independiente que crea juegos para móviles cuidados al detalle, para jugadores de todas las edades. Catálogo, estado de los juegos, novedades, privacidad y soporte." />
+  <meta name="theme-color" content="#070814" />
   <link rel="icon" type="image/png" href="assets/img/nexyra-emblem.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="NEXYRA GAMES" />
-  <meta property="og:description" content="Juegos para móviles hechos con cariño, para peques y familias." />
+  <meta property="og:description" content="Estudio indie de juegos para móviles, para jugadores de todas las edades." />
   <meta property="og:image" content="assets/img/nexyra-emblem.png" />
 
   <!-- Animaciones: solo si el usuario no pide movimiento reducido.
@@ -27,7 +27,7 @@
   <!-- Fuentes (Noto Sans JP se carga solo al elegir japonés) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..700,0..100&family=Nunito+Sans:ital,opsz,wght@0,6..12,400..800;1,6..12,400..800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=Sora:wght@500..800&display=swap" rel="stylesheet" />
 
   <!-- Lenis (scroll suave) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css" />
@@ -88,12 +88,12 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow" data-intro="eyebrow">
-            <span class="pulse-dot"></span> <span data-i18n="hero.eyebrow">Estudio indie · Juegos para toda la familia</span>
+            <span class="pulse-dot"></span> <span data-i18n="hero.eyebrow">Estudio indie · Juegos para móviles</span>
           </p>
-          <h1 class="hero-title" data-intro="title" data-split data-i18n-rich="hero.title">Juegos hechos con <em class="hl">cariño</em> para disfrutar en familia</h1>
+          <h1 class="hero-title" data-intro="title" data-split data-i18n-rich="hero.title">Juegos pequeños, <em class="hl">hechos con oficio</em></h1>
           <p class="hero-sub" data-intro="sub" data-i18n-rich="hero.sub">
-            Somos un pequeño estudio independiente. Creamos juegos para móviles <strong class="mark">sencillos, bonitos y seguros</strong>,
-            para que los peques aprendan jugando y los mayores estén tranquilos.
+            Somos un estudio independiente. Creamos juegos para móviles <strong class="mark">cuidados al detalle, justos y sin trucos</strong>:
+            puzles para relajarse, juegos para aprender y experiencias para todas las edades.
           </p>
           <div class="hero-ctas" data-intro="ctas">
             <a href="#juegos" class="btn btn-primary" data-magnet>
@@ -118,17 +118,17 @@
             <span class="arch-hill" aria-hidden="true"></span>
             <img src="assets/img/nexyra-emblem.png" alt="Emblema de NEXYRA GAMES" data-i18n-attr="alt:hero.emblemAlt" class="arch-emblem" width="1254" height="1254" />
           </div>
-          <span class="float-chip chip-a" data-float>
-            <span class="chip-ico tone-terra"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-brush" /></svg></span>
-            <span data-i18n="chip.color">Colorear</span>
-          </span>
+          <a class="float-chip chip-a" data-float href="bolitas/">
+            <span class="chip-ico"><img src="assets/img/bolitas-cover.png" alt="" width="64" height="64" /></span>
+            <span>Bolitas</span>
+          </a>
           <span class="float-chip chip-b" data-float>
-            <span class="chip-ico tone-sage"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-paw" /></svg></span>
-            <span data-i18n="chip.pets">Mascotas</span>
+            <span class="chip-ico"><img src="assets/img/petmath-cover.png" alt="" width="64" height="64" /></span>
+            <span>PetMath</span>
           </span>
           <span class="float-chip chip-c" data-float>
-            <span class="chip-ico tone-honey"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-bulb" /></svg></span>
-            <span data-i18n="chip.learn">Aprender jugando</span>
+            <span class="chip-ico"><img src="assets/img/pintipop-cover.png" alt="" width="64" height="64" /></span>
+            <span>Pintipop</span>
           </span>
         </div>
       </div>
@@ -145,8 +145,8 @@
       <div class="container">
         <header class="section-head" data-reveal>
           <p class="kicker" data-i18n="games.kicker">Nuestros juegos</p>
-          <h2 class="section-title" data-i18n-rich="games.title">Pequeños mundos <em class="hl">para jugar juntos</em></h2>
-          <p class="section-sub" data-i18n="games.sub">Cada juego nace de una idea sencilla y se pule con calma. Toca una tarjeta y llévatelo a tu móvil.</p>
+          <h2 class="section-title" data-i18n-rich="games.title">Mundos para <em class="hl">jugar a tu ritmo</em></h2>
+          <p class="section-sub" data-i18n="games.sub">Cada juego nace de una idea sencilla y se pule hasta que se siente bien en la mano. Toca una tarjeta para saber más.</p>
         </header>
 
         <div class="chips" role="tablist" aria-label="Filtrar juegos" data-i18n-attr="aria-label:filter.label" data-reveal>
@@ -164,10 +164,10 @@
     <section class="statement" aria-labelledby="statementText">
       <div class="container">
         <span class="statement-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><use href="#ico-heart" /></svg>
+          <svg viewBox="0 0 24 24"><use href="#ico-spark" /></svg>
         </span>
         <p id="statementText" class="statement-text" data-scroll-reveal data-i18n="about.statement">
-          Creemos que una pantalla también puede ser un lugar tranquilo: juegos sin prisas ni trucos, cuidados hasta el último detalle, para que jugar en familia sea siempre un buen momento.
+          Creemos que un buen juego para el móvil no necesita trampas: sin anuncios a la fuerza, sin presión para comprar y con cada detalle cuidado, para que jugar sea siempre un buen momento.
         </p>
       </div>
     </section>
@@ -177,22 +177,22 @@
       <div class="container">
         <header class="section-head" data-reveal>
           <p class="kicker" data-i18n="values.kicker">Cómo trabajamos</p>
-          <h2 class="section-title" data-i18n-rich="values.title">Pequeños detalles que <em class="hl">dan confianza</em></h2>
+          <h2 class="section-title" data-i18n-rich="values.title">Lo que <em class="hl">nos importa</em></h2>
         </header>
         <div class="values-grid" data-stagger>
           <article class="value-card">
-            <span class="value-icon tone-honey"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-smile" /></svg></span>
-            <h3 data-i18n="values.1t">Pensados para peques</h3>
+            <span class="value-icon tone-sky"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-smile" /></svg></span>
+            <h3 data-i18n="values.1t">Para cada jugador</h3>
             <p data-i18n="values.1d"></p>
           </article>
           <article class="value-card">
-            <span class="value-icon tone-sage"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-shield" /></svg></span>
-            <h3 data-i18n="values.2t">Sin trucos ni sorpresas</h3>
+            <span class="value-icon tone-plum"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-shield" /></svg></span>
+            <h3 data-i18n="values.2t">Juego limpio</h3>
             <p data-i18n="values.2d"></p>
           </article>
           <article class="value-card">
-            <span class="value-icon tone-terra"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-home" /></svg></span>
-            <h3 data-i18n="values.3t">Hechos con calma</h3>
+            <span class="value-icon tone-terra"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-spark" /></svg></span>
+            <h3 data-i18n="values.3t">Hechos con oficio</h3>
             <p data-i18n="values.3d"></p>
           </article>
         </div>
@@ -327,14 +327,14 @@
         <img src="assets/img/nexyra-emblem.png" alt="" width="56" height="56" />
         <div>
           <p class="footer-name">NEXYRA GAMES</p>
-          <p class="footer-tagline" data-i18n="footer.tagline">Juegos para móviles hechos con cariño, para peques y familias.</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">Estudio independiente de juegos para móviles, para jugadores de todas las edades.</p>
         </div>
       </div>
       <ul class="footer-links">
         <li><a href="#juegos" data-i18n="nav.games">Juegos</a></li>
         <li><a href="#actualizaciones" data-i18n="nav.updates">Novedades</a></li>
         <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
-        <li><a href="pintipop/privacidad.html" data-i18n="footer.privacy">Privacidad de Pintipop</a></li>
+        <li><a href="privacidad/" data-i18n="footer.privacy">Privacidad</a></li>
       </ul>
     </div>
     <div class="container footer-bottom">

@@ -223,14 +223,14 @@
      Portada generada (si un juego no tiene imagen)
      --------------------------------------------------------------------- */
   function generatedCover(title, seed) {
-    const palettes = [["#d4683f", "#eeac3f"], ["#4c7a5c", "#9cc5a6"], ["#6b5bd2", "#b9aff0"], ["#b4532f", "#f2b8a0"]];
+    const palettes = [["#5b3df5", "#3ec5ff"], ["#8b5cf6", "#e04ff2"], ["#127fd6", "#34d399"], ["#c026d3", "#fbbf24"]];
     const [a, b] = palettes[seed % palettes.length];
     const initials = String(L(title)).split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
       <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${b}"/><stop offset="1" stop-color="${a}"/></linearGradient></defs>
       <rect width="256" height="256" fill="url(#g)"/>
       <circle cx="200" cy="56" r="70" fill="#fff" fill-opacity=".14"/>
-      <text x="128" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="104" fill="#fffdf9">${esc(initials)}</text>
+      <text x="128" y="160" text-anchor="middle" font-family="Sora, system-ui, sans-serif" font-weight="800" font-size="104" fill="#ffffff">${esc(initials)}</text>
     </svg>`;
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   }
@@ -258,7 +258,7 @@
   }
 
   // Fondo de cada tarjeta: el "color" del juego en data.js o uno de estos por orden
-  const TINTS = ["#fde4cf", "#e2eedf", "#e9e3fb", "#fadfe5", "#dcebf6", "#fcefd3"];
+  const TINTS = ["#8b5cf6", "#3ec5ff", "#e04ff2", "#34d399", "#4d7cff", "#fbbf24"];
 
   function renderGames() {
     const grid = $("#gamesGrid");
@@ -282,13 +282,16 @@
             <p class="game-genre">${esc(L(g.genre))}</p>
             <h3 class="game-title">${esc(L(g.title))}</h3>
             <p class="game-desc">${esc(L(g.description))}</p>
-            <a class="btn-play ${hasLink ? "" : "is-disabled"}" ${hasLink ? `href="${esc(g.playUrl)}" target="_blank" rel="noopener"` : 'aria-disabled="true"'}>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
-              <span>
-                <span class="btn-play-small">${esc(t(hasLink ? "card.download" : "card.soon"))}</span>
-                <span class="btn-play-big">Google Play</span>
-              </span>
-            </a>
+            <div class="game-actions">
+              <a class="btn-play ${hasLink ? "" : "is-disabled"}" ${hasLink ? `href="${esc(g.playUrl)}" target="_blank" rel="noopener"` : 'aria-disabled="true"'}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-play" /></svg>
+                <span>
+                  <span class="btn-play-small">${esc(t(hasLink ? "card.download" : "card.soon"))}</span>
+                  <span class="btn-play-big">Google Play</span>
+                </span>
+              </a>
+              ${g.page || g.privacy ? `<span class="game-links">${g.page ? `<a href="${esc(g.page)}">${esc(t("card.details"))}</a>` : ""}${g.privacy ? `<a href="${esc(g.privacy)}">${esc(t("card.privacy"))}</a>` : ""}</span>` : ""}
+            </div>
           </div>
         </article>`;
       })

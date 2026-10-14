@@ -29,7 +29,7 @@ window.NEXYRA = {
     formEndpoint: "",
 
     // Opcional: JSON remoto con el estado de los juegos para actualizarlo
-    // sin volver a publicar la web. Formato: { "petmath": "online", "otro": "maintenance" }
+    // sin volver a publicar la web. Formato: { "bolitas": "online", "petmath": "soon" }
     // Vacío = se usa el campo "status" de cada juego de abajo.
     statusEndpoint: "",
     statusRefreshSeconds: 60,
@@ -47,6 +47,35 @@ window.NEXYRA = {
   // cover: ruta a imagen (se ve como icono de app). Vacío = icono automático con las iniciales.
   // color: opcional, fondo de la tarjeta (p. ej. "#fde4cf"). Vacío = uno cálido por orden.
   games: [
+    {
+      id: "bolitas",
+      title: "Bolitas",
+      genre: {
+        es: "Puzle · Relajante · Para todos",
+        en: "Puzzle · Relaxing · For everyone",
+        pt: "Quebra-cabeça · Relaxante · Para todos",
+        fr: "Puzzle · Relaxant · Pour tous",
+        de: "Puzzle · Entspannend · Für alle",
+        it: "Puzzle · Rilassante · Per tutti",
+        ja: "パズル・リラックス・みんなで",
+      },
+      description: {
+        es: "Ordena las bolitas de colores en sus tubos hasta que cada uno tenga un solo color. Niveles infinitos, niveles especiales con niebla, candados y jefes, animaciones cuidadas y 9 idiomas. Sin anuncios forzados y sin conexión.",
+        en: "Sort the colorful balls into their tubes until each one holds a single color. Endless levels, special levels with fog, locks and bosses, polished animations and 9 languages. No forced ads, and it plays offline.",
+        pt: "Ordene as bolinhas coloridas nos tubos até cada um ter uma só cor. Níveis infinitos, níveis especiais com névoa, cadeados e chefes, animações caprichadas e 9 idiomas. Sem anúncios forçados e sem internet.",
+        fr: "Range les billes colorées dans leurs tubes jusqu'à ce que chacun n'ait qu'une couleur. Niveaux infinis, niveaux spéciaux avec brouillard, cadenas et boss, animations soignées et 9 langues. Sans pub forcée et hors ligne.",
+        de: "Sortiere die bunten Kugeln in ihre Röhren, bis jede nur noch eine Farbe hat. Endlose Level, Spezial-Level mit Nebel, Schlössern und Bossen, liebevolle Animationen und 9 Sprachen. Ohne Zwangswerbung und offline spielbar.",
+        it: "Ordina le palline colorate nei tubi finché ognuno ha un solo colore. Livelli infiniti, livelli speciali con nebbia, lucchetti e boss, animazioni curate e 9 lingue. Senza pubblicità forzata e senza connessione.",
+        ja: "カラフルなボールをチューブに仕分けて、どのチューブも1色にそろえよう。無限のレベル、霧・ロック・ボスの特別レベル、こだわりのアニメーション、9か国語対応。強制広告なしでオフラインでも遊べます。",
+      },
+      cover: "assets/img/bolitas-cover.png",
+      color: "#8b5cf6",
+      page: "bolitas/",
+      privacy: "bolitas/privacidad.html",
+      playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
+      status: "soon", // "online" al publicar
+      tag: "new",
+    },
     {
       id: "petmath",
       title: "PetMath",
@@ -95,6 +124,7 @@ window.NEXYRA = {
         ja: "はみ出さずにぬれるぬりえ：12カテゴリーに240枚のぬりえ、虹色やキラキラの魔法のブラシ、シール、そして子どもを応援する絵の具のしずく「ピンティ」。文字なしで、まだ字が読めない子でも遊べます。",
       },
       cover: "assets/img/pintipop-cover.png",
+      privacy: "pintipop/privacidad.html",
       playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
       status: "soon", // "soon" = aún no publicado (insignia «Próximamente»); "online" al publicar
       tag: "inDev", // cámbialo por "new" al publicar
@@ -106,6 +136,42 @@ window.NEXYRA = {
   // date:  AAAA-MM-DD, o "" si aún no hay fecha (sale al final como «Sin fecha»)
   // progress: 0-100, opcional (sin él no se muestra la barra)
   roadmap: [
+    {
+      game: "Bolitas",
+      version: "v1.0",
+      date: "",
+      state: "inDev",
+      progress: 90,
+      items: [
+        { type: "feature", text: {
+          es: "Lanzamiento en Google Play",
+          en: "Launch on Google Play",
+          pt: "Lançamento no Google Play",
+          fr: "Sortie sur Google Play",
+          de: "Start bei Google Play",
+          it: "Lancio su Google Play",
+          ja: "Google Playでリリース",
+        } },
+        { type: "content", text: {
+          es: "Niveles especiales: niebla, candado, límite de movimientos y jefes",
+          en: "Special levels: fog, lock, move limit and bosses",
+          pt: "Níveis especiais: névoa, cadeado, limite de movimentos e chefes",
+          fr: "Niveaux spéciaux : brouillard, cadenas, limite de coups et boss",
+          de: "Spezial-Level: Nebel, Schloss, Zuglimit und Bosse",
+          it: "Livelli speciali: nebbia, lucchetto, limite di mosse e boss",
+          ja: "特別レベル:霧、ロック、手数制限、ボス",
+        } },
+        { type: "content", text: {
+          es: "9 idiomas, entre ellos japonés, hindi e indonesio",
+          en: "9 languages, including Japanese, Hindi and Indonesian",
+          pt: "9 idiomas, entre eles japonês, hindi e indonésio",
+          fr: "9 langues, dont le japonais, l'hindi et l'indonésien",
+          de: "9 Sprachen, darunter Japanisch, Hindi und Indonesisch",
+          it: "9 lingue, tra cui giapponese, hindi e indonesiano",
+          ja: "日本語、ヒンディー語、インドネシア語を含む9か国語",
+        } },
+      ],
+    },
     {
       game: "Pintipop",
       version: {

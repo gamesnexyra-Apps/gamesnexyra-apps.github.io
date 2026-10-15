@@ -20,6 +20,9 @@ js/i18n.js            ← TEXTOS DE LA INTERFAZ en 7 idiomas
 js/main.js            Interactividad (menú, idiomas, filtros, estado, roadmap, formulario)
 js/effects.js         Animaciones: Lenis + GSAP y los efectos de React Bits
 licenses/             Licencia de React Bits (obligatorio conservarla)
+licencias/            Página pública de licencias de terceros
+vendor/               GSAP, Lenis (y su licencia) alojados aquí: la web no carga nada de CDNs ni de Google
+css/fonts.css         Inter y Sora alojadas en assets/fonts (licencias OFL junto a ellas)
 assets/img/           Emblema y portadas
 status.example.json   Ejemplo de JSON de estado remoto
 ```

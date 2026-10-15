@@ -67,14 +67,8 @@
     return L(v);
   };
 
-  function loadJapaneseFont() {
-    if ($("#font-ja")) return;
-    const link = document.createElement("link");
-    link.id = "font-ja";
-    link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap";
-    document.head.appendChild(link);
-  }
+  // El japonés usa las fuentes del sistema: la web no carga nada de servidores de terceros
+  function loadJapaneseFont() {}
 
   function applyStaticTexts() {
     document.documentElement.lang = lang;

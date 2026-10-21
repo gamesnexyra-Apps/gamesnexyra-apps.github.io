@@ -77,6 +77,35 @@ window.NEXYRA = {
       tag: "new",
     },
     {
+      id: "nexyra-sudoku",
+      title: "NEXYRA Sudoku",
+      genre: {
+        es: "Lógica · Fantasía · 13+",
+        en: "Logic · Fantasy · 13+",
+        pt: "Lógica · Fantasia · 13+",
+        fr: "Logique · Fantasy · 13+",
+        de: "Logik · Fantasy · 13+",
+        it: "Logica · Fantasy · 13+",
+        ja: "ロジック・ファンタジー・13歳以上",
+      },
+      description: {
+        es: "Resuelve tableros de Sudoku para restaurar reinos mágicos y despertar a sus criaturas. Dos reinos con 80 niveles, reto diario, misiones, Sudoku Diagonal y Lumi, una lechuza que te enseña técnicas de lógica. Sin conexión y en 8 idiomas.",
+        en: "Solve Sudoku boards to restore magical realms and awaken their creatures. Two realms with 80 levels, a daily challenge, missions, Diagonal Sudoku and Lumi, an owl who teaches you logic techniques. Offline and in 8 languages.",
+        pt: "Resolva tabuleiros de Sudoku para restaurar reinos mágicos e despertar suas criaturas. Dois reinos com 80 níveis, desafio diário, missões, Sudoku Diagonal e Lumi, uma coruja que ensina técnicas de lógica. Offline e em 8 idiomas.",
+        fr: "Résous des grilles de Sudoku pour restaurer des royaumes magiques et réveiller leurs créatures. Deux royaumes et 80 niveaux, un défi du jour, des missions, le Sudoku Diagonal et Lumi, une chouette qui t'apprend les techniques de logique. Hors ligne et en 8 langues.",
+        de: "Löse Sudoku-Rätsel, um magische Reiche wiederherzustellen und ihre Kreaturen zu wecken. Zwei Reiche mit 80 Leveln, tägliche Herausforderung, Missionen, Diagonal-Sudoku und Lumi, eine Eule, die dir Logiktechniken beibringt. Offline und in 8 Sprachen.",
+        it: "Risolvi griglie di Sudoku per ripristinare regni magici e risvegliare le loro creature. Due regni con 80 livelli, sfida quotidiana, missioni, Sudoku Diagonale e Lumi, una civetta che ti insegna le tecniche di logica. Offline e in 8 lingue.",
+        ja: "数独を解いて魔法の王国をよみがえらせ、眠る生き物たちを目覚めさせよう。80レベルの2つの王国、デイリーチャレンジ、ミッション、対角線数独、そしてロジックのテクニックを教えてくれるフクロウのルミ。オフライン対応、8か国語。",
+      },
+      cover: "assets/img/nexyra-sudoku-cover.png",
+      color: "#3b2a8c",
+      page: "nexyra-sudoku/",
+      privacy: "nexyra-sudoku/privacidad.html",
+      playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
+      status: "soon", // "online" al publicar
+      tag: "new",
+    },
+    {
       id: "petmath",
       title: "PetMath",
       genre: {
@@ -136,6 +165,76 @@ window.NEXYRA = {
   // date:  AAAA-MM-DD, o "" si aún no hay fecha (sale al final como «Sin fecha»)
   // progress: 0-100, opcional (sin él no se muestra la barra)
   roadmap: [
+    {
+      game: "NEXYRA Sudoku",
+      version: "v1.0",
+      date: "",
+      state: "inDev",
+      progress: 90,
+      items: [
+        { type: "feature", text: {
+          es: "Lanzamiento en Google Play (ahora en prueba cerrada)",
+          en: "Launch on Google Play (now in closed testing)",
+          pt: "Lançamento no Google Play (agora em teste fechado)",
+          fr: "Sortie sur Google Play (actuellement en test fermé)",
+          de: "Start bei Google Play (jetzt im geschlossenen Test)",
+          it: "Lancio su Google Play (ora in test chiuso)",
+          ja: "Google Playでリリース(現在クローズドテスト中)",
+        } },
+        { type: "content", text: {
+          es: "Dos reinos, Emerald Wilds y Crystal Moon, con 80 niveles, criaturas y reliquias",
+          en: "Two realms, Emerald Wilds and Crystal Moon, with 80 levels, creatures and relics",
+          pt: "Dois reinos, Emerald Wilds e Crystal Moon, com 80 níveis, criaturas e relíquias",
+          fr: "Deux royaumes, Emerald Wilds et Crystal Moon, avec 80 niveaux, créatures et reliques",
+          de: "Zwei Reiche, Emerald Wilds und Crystal Moon, mit 80 Leveln, Kreaturen und Relikten",
+          it: "Due regni, Emerald Wilds e Crystal Moon, con 80 livelli, creature e reliquie",
+          ja: "エメラルドワイルズとクリスタルムーンの2つの王国、80レベル、生き物と遺物",
+        } },
+        { type: "feature", text: {
+          es: "Reto diario, misiones y Sudoku Diagonal",
+          en: "Daily challenge, missions and Diagonal Sudoku",
+          pt: "Desafio diário, missões e Sudoku Diagonal",
+          fr: "Défi du jour, missions et Sudoku Diagonal",
+          de: "Tägliche Herausforderung, Missionen und Diagonal-Sudoku",
+          it: "Sfida quotidiana, missioni e Sudoku Diagonale",
+          ja: "デイリーチャレンジ、ミッション、対角線数独",
+        } },
+      ],
+    },
+    {
+      game: "NEXYRA Sudoku",
+      version: {
+        es: "Futuras actualizaciones",
+        en: "Future updates",
+        pt: "Próximas atualizações",
+        fr: "Prochaines mises à jour",
+        de: "Kommende Updates",
+        it: "Aggiornamenti futuri",
+        ja: "今後のアップデート",
+      },
+      date: "",
+      state: "planned",
+      items: [
+        { type: "content", text: {
+          es: "Tercer reino: Ashen Dominion",
+          en: "Third realm: Ashen Dominion",
+          pt: "Terceiro reino: Ashen Dominion",
+          fr: "Troisième royaume : Ashen Dominion",
+          de: "Drittes Reich: Ashen Dominion",
+          it: "Terzo regno: Ashen Dominion",
+          ja: "第3の王国:アッシェン・ドミニオン",
+        } },
+        { type: "feature", text: {
+          es: "Logros",
+          en: "Achievements",
+          pt: "Conquistas",
+          fr: "Succès",
+          de: "Erfolge",
+          it: "Obiettivi",
+          ja: "実績",
+        } },
+      ],
+    },
     {
       game: "Bolitas",
       version: "v1.0",

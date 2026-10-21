@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXYRA Sudoku · Sudoku de fantasía · NEXYRA GAMES</title>
+<meta name="description" content="NEXYRA Sudoku: resuelve tableros para restaurar reinos mágicos, despierta criaturas y aprende técnicas de lógica con Lumi. Sin conexión y en 8 idiomas. NEXYRA Sudoku: a fantasy Sudoku adventure.">
+<meta name="theme-color" content="#070814">
+<link rel="icon" href="../assets/img/nexyra-sudoku-cover.png">
+<meta property="og:title" content="NEXYRA Sudoku · NEXYRA GAMES">
+<meta property="og:description" content="Resuelve los tableros. Restaura los reinos. Solve the boards. Restore the realms.">
+<meta property="og:image" content="../assets/img/nexyra-sudoku-cover.png">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/page.css">
+<script>
+  // Idioma: ?lang=es|en, si no el del navegador (español si empieza por "es"; si no, inglés)
+  (function () {
+    var q = new URLSearchParams(location.search).get("lang");
+    var l = q === "es" || q === "en" ? q : (/^es/i.test(navigator.language || "es") ? "es" : "en");
+    document.documentElement.lang = l;
+  })();
+</script>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="../"><img src="../assets/img/nexyra-emblem.png" alt="">NEXYRA GAMES</a>
+    <nav class="langs" style="margin:0"><button type="button" data-set="es">ES</button><button type="button" data-set="en">EN</button></nav>
+  </div>
+
+  <div class="game-hero">
+    <img class="icon" src="../assets/img/nexyra-sudoku-cover.png" alt="NEXYRA Sudoku" width="140" height="140">
+    <div>
+      <h1>NEXYRA Sudoku</h1>
+      <p class="tagline" data-l="es">Resuelve los tableros. Restaura los reinos.</p>
+      <p class="tagline" data-l="en">Solve the boards. Restore the realms.</p>
+      <div class="badges">
+        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span>
+        <span class="badge" data-l="es">Lógica</span><span class="badge" data-l="en">Logic</span>
+        <span class="badge" data-l="es">Fantasía</span><span class="badge" data-l="en">Fantasy</span>
+        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span>
+        <span class="badge" data-l="es">8 idiomas</span><span class="badge" data-l="en">8 languages</span>
+      </div>
+      <!-- Al publicar: cambia href por el enlace de Google Play y añade la clase "live" -->
+      <a class="play" aria-disabled="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.6v12.8c0 .8.9 1.3 1.6.9l10-6.4c.6-.4.6-1.3 0-1.7l-10-6.4C8.9 4.3 8 4.8 8 5.6Z"/></svg>
+        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><b>Google Play</b></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="shots" data-l="es">
+    <img src="../assets/img/nexyra-sudoku/es-1-inicio.jpg" alt="Pantalla de inicio con Lumi, la Esencia y el reto diario" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/es-2-mapa.jpg" alt="Mapa de Emerald Wilds con los niveles del capítulo 1" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/es-3-tablero.jpg" alt="Tablero Diagonal de Crystal Moon con notas" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/es-4-coleccion.jpg" alt="Colección de criaturas de Emerald Wilds" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/es-5-resultados.jpg" alt="Resultados: fragmento restaurado, perfecto" loading="lazy">
+  </div>
+  <div class="shots" data-l="en">
+    <img src="../assets/img/nexyra-sudoku/en-1-inicio.jpg" alt="Home screen with Lumi, Essence and the daily challenge" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-2-mapa.jpg" alt="Emerald Wilds map with the chapter 1 levels" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-3-tablero.jpg" alt="Crystal Moon Diagonal board with notes" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-4-coleccion.jpg" alt="Emerald Wilds creature collection" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-5-resultados.jpg" alt="Results: fragment restored, perfect" loading="lazy">
+  </div>
+
+  <section data-l="es">
+    <h2 class="doc-title">Cómo se juega</h2>
+    <p>Rellena el tablero para que cada fila, cada columna y cada caja de 3×3 tenga los números del 1 al 9 una sola vez. Cada tablero que resuelves devuelve la vida a un rincón de los reinos: los bosques reverdecen, la luna vuelve a brillar y despiertan las criaturas que los guardan.</p>
+    <ul class="features">
+      <li><b>Campaña de fantasía</b>Dos reinos, Emerald Wilds y Crystal Moon, con 80 niveles, desafíos y guardianes. Ashen Dominion llegará en una actualización.</li>
+      <li><b>Aprende con Lumi</b>Las pistas no solo dan la respuesta: Lumi te señala la zona y te explica la técnica (único oculto, parejas, X-Wing…).</li>
+      <li><b>Reto diario</b>Un tablero nuevo cada día, el mismo para todos, con racha y misiones diarias y semanales.</li>
+      <li><b>Colección</b>Criaturas y reliquias que despiertan al restaurar los reinos y mantener tu racha.</li>
+      <li><b>Variantes</b>Sudoku clásico y Diagonal.</li>
+      <li><b>Accesible</b>TalkBack, texto grande, opciones de resaltado y reloj ocultable.</li>
+      <li><b>Juego limpio</b>Las pistas nunca se compran. Anuncios solo entre niveles y no antes de terminar el primer capítulo; los vídeos con recompensa son opcionales. Premium quita los anuncios entre niveles.</li>
+      <li><b>8 idiomas</b>Español, inglés, portugués, hindi, indonesio, alemán, francés y japonés.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html">Política de privacidad</a><a href="../#contacto">Soporte</a></div>
+  </section>
+  <section data-l="en">
+    <h2 class="doc-title">How to play</h2>
+    <p>Fill the board so that every row, every column and every 3×3 box holds the digits 1 to 9 exactly once. Every board you solve brings a corner of the realms back to life: forests turn green again, the moon shines once more and the creatures that guard them wake up.</p>
+    <ul class="features">
+      <li><b>Fantasy campaign</b>Two realms, Emerald Wilds and Crystal Moon, with 80 levels, challenges and guardians. Ashen Dominion arrives in an update.</li>
+      <li><b>Learn with Lumi</b>Hints do more than give the answer: Lumi points at the area and explains the technique (hidden single, pairs, X-Wing…).</li>
+      <li><b>Daily challenge</b>A new board every day, the same for everyone, with a streak plus daily and weekly missions.</li>
+      <li><b>Collection</b>Creatures and relics that awaken as you restore the realms and keep your streak.</li>
+      <li><b>Variants</b>Classic and Diagonal Sudoku.</li>
+      <li><b>Accessible</b>TalkBack, large text, highlight options and a clock you can hide.</li>
+      <li><b>Fair play</b>Hints are never sold. Ads only between levels, and not before the first chapter is finished; rewarded videos are optional. Premium removes the ads between levels.</li>
+      <li><b>8 languages</b>Spanish, English, Portuguese, Hindi, Indonesian, German, French and Japanese.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Privacy policy</a><a href="../?lang=en#contacto">Support</a></div>
+  </section>
+
+  <footer>© 2026 NEXYRA GAMES · <a href="../privacidad/">Privacidad / Privacy</a> · <a href="../licencias/">Licencias / Licenses</a><br>Google Play y el logotipo de Google Play son marcas de Google LLC. / Google Play and the Google Play logo are trademarks of Google LLC.</footer>
+</main>
+<script>
+  document.querySelectorAll("[data-set]").forEach(function (b) {
+    var sync = function () { document.querySelectorAll("[data-set]").forEach(function (x) { x.classList.toggle("on", x.dataset.set === document.documentElement.lang); }); };
+    b.addEventListener("click", function () { document.documentElement.lang = b.dataset.set; history.replaceState(null, "", "?lang=" + b.dataset.set); sync(); });
+    sync();
+  });
+</script>
+</body>
+</html>

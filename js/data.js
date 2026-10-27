@@ -153,6 +153,7 @@ window.NEXYRA = {
         ja: "はみ出さずにぬれるぬりえ：12カテゴリーに240枚のぬりえ、虹色やキラキラの魔法のブラシ、シール、そして子どもを応援する絵の具のしずく「ピンティ」。文字なしで、まだ字が読めない子でも遊べます。",
       },
       cover: "assets/img/pintipop-cover.png",
+      page: "pintipop/",
       privacy: "pintipop/privacidad.html",
       playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
       status: "soon", // "soon" = aún no publicado (insignia «Próximamente»); "online" al publicar

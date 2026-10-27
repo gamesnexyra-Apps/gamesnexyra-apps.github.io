@@ -299,7 +299,7 @@ h1, h2, h3 {
 .stat dt { font-size: 0.78rem; font-weight: 600; line-height: 1.25; color: var(--ink-3); }
 
 /* Portal con el emblema y órbitas */
-.hero-art { position: relative; width: min(100%, 460px); margin-inline: auto; padding: 22px 30px; }
+.hero-art { position: relative; width: min(100%, 500px); margin-inline: auto; padding: 56px 52px; }
 .arch {
   position: relative; display: grid; place-items: center;
   aspect-ratio: 1;
@@ -331,13 +331,30 @@ h1, h2, h3 {
 .chip-ico { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; overflow: hidden; }
 .chip-ico svg { width: 18px; height: 18px; }
 .chip-ico img { width: 100%; height: 100%; object-fit: cover; }
-.chip-a { top: 12%; left: 0; rotate: -5deg; }
-.chip-b { top: 50%; right: 0; rotate: 4deg; }
-.chip-c { bottom: 6%; left: 6%; rotate: -2deg; }
-.chip-d { bottom: 18%; right: 2%; rotate: 3deg; }
-.float-chip:hover { border-color: var(--cyan); }
+/* Una etiqueta en cada esquina, fuera del círculo del emblema */
+.chip-a { top: 3%; left: 0; rotate: -5deg; }
+.chip-b { top: 7%; right: 0; rotate: 4deg; }
+.chip-c { bottom: 7%; left: 0; rotate: -3deg; }
+.chip-d { bottom: 2%; right: 0; rotate: 3deg; }
+.float-chip {
+  transition: border-color 0.25s, box-shadow 0.25s, scale 0.25s;
+}
+.float-chip:hover {
+  scale: 1.07; border-color: var(--cyan);
+  box-shadow: 0 0 0 1px rgba(62, 197, 255, 0.35), 0 12px 32px -8px rgba(62, 197, 255, 0.55);
+}
+.chip-ico img { transition: rotate 0.4s; }
+.float-chip:hover .chip-ico img { rotate: -8deg; }
+/* Puntos de luz que giran alrededor del emblema */
+.orbit { position: absolute; inset: -9%; border-radius: 50%; pointer-events: none; animation: spin 16s linear infinite; }
+.orbit.o2 { inset: 9%; animation-duration: 24s; animation-direction: reverse; }
+.orbit i {
+  position: absolute; top: -4px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%;
+  background: #8fe3ff; box-shadow: 0 0 10px 3px rgba(62, 197, 255, 0.85), 0 0 24px 6px rgba(62, 197, 255, 0.35);
+}
+.orbit.o2 i { width: 6px; height: 6px; margin-left: -3px; top: -3px; background: #f3a8ff; box-shadow: 0 0 10px 3px rgba(224, 79, 242, 0.85), 0 0 22px 6px rgba(224, 79, 242, 0.3); }
 @media (max-width: 479px) {
-  .hero-art { padding-inline: 14px; }
+  .hero-art { padding: 50px 14px; }
   .float-chip { font-size: 0.78rem; padding: 5px 11px 5px 5px; }
   .chip-ico { width: 28px; height: 28px; }
 }

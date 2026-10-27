@@ -160,7 +160,15 @@
       onStart: () => pendingCounts.splice(0).forEach(([el, end]) => countTo(el, end)),
     }, "<0.12");
     introTl.fromTo(q('[data-intro="art"]'), { opacity: 0, scale: 0.94, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 1.3, ease: "power2.out" }, 0.3);
-    introTl.fromTo(q(".float-chip"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, stagger: 0.14, ease: "back.out(2)" }, 0.95);
+    // Las etiquetas de los juegos salen del centro del emblema hacia su esquina
+    const art = hero.querySelector(".hero-art");
+    const fromCenter = (axis) => (i, el) => {
+      if (!art) return 0;
+      const a = art.getBoundingClientRect(), r = el.getBoundingClientRect();
+      return axis === "x" ? (a.left + a.width / 2) - (r.left + r.width / 2) : (a.top + a.height / 2) - (r.top + r.height / 2);
+    };
+    introTl.fromTo(q(".float-chip"), { opacity: 0, scale: 0.3, x: fromCenter("x"), y: fromCenter("y") },
+      { opacity: 1, scale: 1, x: 0, y: 0, duration: 1.1, stagger: 0.16, ease: "back.out(1.3)" }, 0.9);
   }
 
   /* ---------------------------------------------------------------------
@@ -303,8 +311,20 @@
      Detalles: parallax de la portada, chips flotando y línea del roadmap
      --------------------------------------------------------------------- */
   function ambient() {
-    $$("[data-float]").forEach((el, i) =>
-      gsap.to(el, { y: i % 2 ? 9 : -9, duration: 2.6 + i * 0.5, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 1.2 }));
+    // Cada etiqueta da vueltas suaves alrededor de su sitio (elipse pequeña, sentido y
+    // ritmo distintos) con un ligero balanceo; empieza con amplitud 0 tras la entrada
+    $$("[data-float]").forEach((el, i) => {
+      const o = { a: i * 1.7, k: 0 };
+      const rx = 9 + (i % 3) * 3, ry = 6 + (i % 2) * 4, dir = i % 2 ? -1 : 1;
+      gsap.to(o, { k: 1, duration: 1.6, delay: 2.4, ease: "sine.inOut" });
+      gsap.to(o, {
+        a: o.a + Math.PI * 2 * dir, duration: 7 + i * 1.4, ease: "none", repeat: -1,
+        onUpdate: () => {
+          if (!o.k) return;
+          gsap.set(el, { x: Math.cos(o.a) * rx * o.k, y: Math.sin(o.a) * ry * o.k, rotation: Math.sin(o.a * 2) * 1.6 * o.k });
+        },
+      });
+    });
 
     gsap.to(".hero-art .arch", {
       yPercent: 7, ease: "none",

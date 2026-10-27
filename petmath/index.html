@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PetMath · Puzles de mates con mascota · NEXYRA GAMES</title>
+<meta name="description" content="PetMath: resuelve puzles matemáticos, cuida a tu mascota y decora su habitación. Para peques, sin presión y sin conexión. PetMath: math puzzles with a pet to look after.">
+<meta name="theme-color" content="#070814">
+<link rel="icon" href="../assets/img/petmath-cover.png">
+<meta property="og:title" content="PetMath · NEXYRA GAMES">
+<meta property="og:description" content="Puzles de mates y una mascota que cuidar. Math puzzles and a pet to look after.">
+<meta property="og:image" content="../assets/img/petmath-cover.png">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/page.css">
+<script>
+  // Idioma: ?lang=es|en, si no el del navegador (español si empieza por "es"; si no, inglés)
+  (function () {
+    var q = new URLSearchParams(location.search).get("lang");
+    var l = q === "es" || q === "en" ? q : (/^es/i.test(navigator.language || "es") ? "es" : "en");
+    document.documentElement.lang = l;
+  })();
+</script>
+</head>
+<body>
+<main>
+  <div class="topbar">
+    <a class="brand" href="../"><img src="../assets/img/nexyra-emblem.png" alt="">NEXYRA GAMES</a>
+    <nav class="langs" style="margin:0"><button type="button" data-set="es">ES</button><button type="button" data-set="en">EN</button></nav>
+  </div>
+
+  <div class="game-hero">
+    <img class="icon" src="../assets/img/petmath-cover.png" alt="PetMath" width="140" height="140">
+    <div>
+      <h1>PetMath</h1>
+      <p class="tagline" data-l="es">Resuelve puzles de mates y cuida a tu mascota.</p>
+      <p class="tagline" data-l="en">Solve math puzzles and look after your pet.</p>
+      <div class="badges">
+        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span>
+        <span class="badge" data-l="es">Puzle</span><span class="badge" data-l="en">Puzzle</span>
+        <span class="badge" data-l="es">Educativo</span><span class="badge" data-l="en">Educational</span>
+        <span class="badge" data-l="es">Mascotas</span><span class="badge" data-l="en">Pets</span>
+        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span>
+      </div>
+      <!-- Al publicar: añade href con el enlace de Google Play, quita aria-disabled y añade la clase "live" -->
+      <a class="play" aria-disabled="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.6v12.8c0 .8.9 1.3 1.6.9l10-6.4c.6-.4.6-1.3 0-1.7l-10-6.4C8.9 4.3 8 4.8 8 5.6Z"/></svg>
+        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><b>Google Play</b></span>
+      </a>
+    </div>
+  </div>
+
+  <section data-l="es">
+    <h2 class="doc-title">Cómo se juega</h2>
+    <p>Resuelve puzles matemáticos para ganar premios, cuida a tu mascota y decora su habitación. Diseñado para peques: sin presión, sin anuncios intrusivos y 100 % sin conexión.</p>
+    <ul class="features">
+      <li><b>Puzles de mates</b>Retos que crecen poco a poco.</li>
+      <li><b>Tu mascota</b>Cuida de ella mientras aprendes.</li>
+      <li><b>Su habitación</b>Decórala con lo que ganas resolviendo puzles.</li>
+      <li><b>Sin presión</b>Sin prisas ni castigos: se aprende jugando.</li>
+      <li><b>Sin conexión</b>Funciona sin internet, en casa o de viaje.</li>
+    </ul>
+    <div class="links"><a href="../#actualizaciones">Novedades</a><a href="../#contacto">Soporte</a></div>
+  </section>
+  <section data-l="en">
+    <h2 class="doc-title">How to play</h2>
+    <p>Solve math puzzles to earn rewards, look after your pet and decorate its room. Designed for kids: no pressure, no intrusive ads and 100% offline.</p>
+    <ul class="features">
+      <li><b>Math puzzles</b>Challenges that grow step by step.</li>
+      <li><b>Your pet</b>Look after it while you learn.</li>
+      <li><b>Its room</b>Decorate it with what you earn solving puzzles.</li>
+      <li><b>No pressure</b>No rush and no penalties: learning through play.</li>
+      <li><b>Offline</b>Works without internet, at home or on the go.</li>
+    </ul>
+    <div class="links"><a href="../?lang=en#actualizaciones">What's new</a><a href="../?lang=en#contacto">Support</a></div>
+  </section>
+
+  <footer>© 2026 NEXYRA GAMES · <a href="../privacidad/">Privacidad / Privacy</a> · <a href="../licencias/">Licencias / Licenses</a><br>Google Play y el logotipo de Google Play son marcas de Google LLC. / Google Play and the Google Play logo are trademarks of Google LLC.</footer>
+</main>
+<script>
+  document.querySelectorAll("[data-set]").forEach(function (b) {
+    var sync = function () { document.querySelectorAll("[data-set]").forEach(function (x) { x.classList.toggle("on", x.dataset.set === document.documentElement.lang); }); };
+    b.addEventListener("click", function () { document.documentElement.lang = b.dataset.set; history.replaceState(null, "", "?lang=" + b.dataset.set); sync(); });
+    sync();
+  });
+</script>
+</body>
+</html>

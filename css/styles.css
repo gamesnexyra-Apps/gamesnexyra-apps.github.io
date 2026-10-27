@@ -334,6 +334,8 @@ h1, h2, h3 {
 .chip-a { top: 12%; left: 0; rotate: -5deg; }
 .chip-b { top: 50%; right: 0; rotate: 4deg; }
 .chip-c { bottom: 6%; left: 6%; rotate: -2deg; }
+.chip-d { bottom: 18%; right: 2%; rotate: 3deg; }
+.float-chip:hover { border-color: var(--cyan); }
 @media (max-width: 479px) {
   .hero-art { padding-inline: 14px; }
   .float-chip { font-size: 0.78rem; padding: 5px 11px 5px 5px; }

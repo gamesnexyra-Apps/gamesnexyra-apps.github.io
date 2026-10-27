@@ -127,6 +127,7 @@ window.NEXYRA = {
         ja: "算数パズルを解いて、ペットのお世話をし、お部屋を飾ろう。お子さま向けに設計：プレッシャーなし、邪魔な広告なし、完全オフライン。",
       },
       cover: "assets/img/petmath-cover.png",
+      page: "petmath/",
       playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
       status: "soon", // "soon" = aún no publicado (insignia «Próximamente»); "online" al publicar
       tag: "workingTitle", // nombre provisional; cámbialo por "new" cuando tenga nombre definitivo

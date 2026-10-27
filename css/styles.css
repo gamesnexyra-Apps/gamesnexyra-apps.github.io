@@ -696,3 +696,6 @@ h1, h2, h3 {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* Con una sola red, la tarjeta ocupa todo el ancho */
+.social-list li:only-child { grid-column: 1 / -1; }

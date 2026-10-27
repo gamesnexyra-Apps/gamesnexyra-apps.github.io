@@ -36,10 +36,7 @@ window.NEXYRA = {
   },
 
   social: [
-    { name: "Discord",   url: "https://discord.gg/",    icon: "discord" },
-    { name: "X",         url: "https://x.com/",         icon: "x" },
     { name: "YouTube",   url: "https://www.youtube.com/@NexyraGames",   icon: "youtube" },
-    { name: "TikTok",    url: "https://tiktok.com/",    icon: "tiktok" },
   ],
 
   // status: "online" | "maintenance"

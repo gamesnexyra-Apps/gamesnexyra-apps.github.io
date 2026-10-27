@@ -87,4 +87,10 @@ footer a { color: var(--ink-2); }
 .list img { width: 48px; height: 48px; border-radius: 14px; }
 .list small { display: block; color: var(--ink-3); font-weight: 500; }
 /* Contenido por idioma (fichas de juego): solo se ve el del idioma de la página */
-html:not([lang="es"]) [data-l="es"], html:not([lang="en"]) [data-l="en"] { display: none !important; }
+html:not([lang="es"]) [data-l="es"],
+html:not([lang="en"]) [data-l="en"],
+html:not([lang="pt"]) [data-l="pt"],
+html:not([lang="fr"]) [data-l="fr"],
+html:not([lang="de"]) [data-l="de"],
+html:not([lang="it"]) [data-l="it"],
+html:not([lang="ja"]) [data-l="ja"] { display: none !important; }

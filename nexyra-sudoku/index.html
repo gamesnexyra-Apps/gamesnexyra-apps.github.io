@@ -12,20 +12,13 @@
 <meta property="og:image" content="../assets/img/nexyra-sudoku-cover.png">
 <link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/page.css">
-<script>
-  // Idioma: ?lang=es|en, si no el del navegador (español si empieza por "es"; si no, inglés)
-  (function () {
-    var q = new URLSearchParams(location.search).get("lang");
-    var l = q === "es" || q === "en" ? q : (/^es/i.test(navigator.language || "es") ? "es" : "en");
-    document.documentElement.lang = l;
-  })();
-</script>
+<script src="../js/page-lang.js"></script>
 </head>
 <body>
 <main>
   <div class="topbar">
     <a class="brand" href="../"><img src="../assets/img/nexyra-emblem.png" alt="">NEXYRA GAMES</a>
-    <nav class="langs" style="margin:0"><button type="button" data-set="es">ES</button><button type="button" data-set="en">EN</button></nav>
+    <nav class="langs" data-langs style="margin:0" aria-label="Idioma / Language"></nav>
   </div>
 
   <div class="game-hero">
@@ -34,17 +27,22 @@
       <h1>NEXYRA Sudoku</h1>
       <p class="tagline" data-l="es">Resuelve los tableros. Restaura los reinos.</p>
       <p class="tagline" data-l="en">Solve the boards. Restore the realms.</p>
+      <p class="tagline" data-l="pt">Resolva os tabuleiros. Restaure os reinos.</p>
+      <p class="tagline" data-l="fr">Résous les grilles. Restaure les royaumes.</p>
+      <p class="tagline" data-l="de">Löse die Rätsel. Rette die Reiche.</p>
+      <p class="tagline" data-l="it">Risolvi le griglie. Ripristina i regni.</p>
+      <p class="tagline" data-l="ja">盤面を解いて、王国をよみがえらせよう。</p>
       <div class="badges">
-        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span>
-        <span class="badge" data-l="es">Lógica</span><span class="badge" data-l="en">Logic</span>
-        <span class="badge" data-l="es">Fantasía</span><span class="badge" data-l="en">Fantasy</span>
-        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span>
-        <span class="badge" data-l="es">8 idiomas</span><span class="badge" data-l="en">8 languages</span>
+        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span><span class="badge soon" data-l="pt">Em breve</span><span class="badge soon" data-l="fr">Bientôt</span><span class="badge soon" data-l="de">Demnächst</span><span class="badge soon" data-l="it">Prossimamente</span><span class="badge soon" data-l="ja">近日公開</span>
+        <span class="badge" data-l="es">Lógica</span><span class="badge" data-l="en">Logic</span><span class="badge" data-l="pt">Lógica</span><span class="badge" data-l="fr">Logique</span><span class="badge" data-l="de">Logik</span><span class="badge" data-l="it">Logica</span><span class="badge" data-l="ja">ロジック</span>
+        <span class="badge" data-l="es">Fantasía</span><span class="badge" data-l="en">Fantasy</span><span class="badge" data-l="pt">Fantasia</span><span class="badge" data-l="fr">Fantasy</span><span class="badge" data-l="de">Fantasy</span><span class="badge" data-l="it">Fantasy</span><span class="badge" data-l="ja">ファンタジー</span>
+        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span><span class="badge" data-l="pt">Offline</span><span class="badge" data-l="fr">Hors ligne</span><span class="badge" data-l="de">Offline</span><span class="badge" data-l="it">Offline</span><span class="badge" data-l="ja">オフライン</span>
+        <span class="badge" data-l="es">8 idiomas</span><span class="badge" data-l="en">8 languages</span><span class="badge" data-l="pt">8 idiomas</span><span class="badge" data-l="fr">8 langues</span><span class="badge" data-l="de">8 Sprachen</span><span class="badge" data-l="it">8 lingue</span><span class="badge" data-l="ja">8言語</span>
       </div>
       <!-- Al publicar: cambia href por el enlace de Google Play y añade la clase "live" -->
       <a class="play" aria-disabled="true">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.6v12.8c0 .8.9 1.3 1.6.9l10-6.4c.6-.4.6-1.3 0-1.7l-10-6.4C8.9 4.3 8 4.8 8 5.6Z"/></svg>
-        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><b>Google Play</b></span>
+        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><small data-l="pt">Em breve no</small><small data-l="fr">Bientôt sur</small><small data-l="de">Demnächst bei</small><small data-l="it">Presto su</small><small data-l="ja">近日公開</small><b>Google Play</b></span>
       </a>
     </div>
   </div>
@@ -57,6 +55,41 @@
     <img src="../assets/img/nexyra-sudoku/es-5-resultados.jpg" alt="Resultados: fragmento restaurado, perfecto" loading="lazy">
   </div>
   <div class="shots" data-l="en">
+    <img src="../assets/img/nexyra-sudoku/en-1-inicio.jpg" alt="Home screen with Lumi, Essence and the daily challenge" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-2-mapa.jpg" alt="Emerald Wilds map with the chapter 1 levels" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-3-tablero.jpg" alt="Crystal Moon Diagonal board with notes" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-4-coleccion.jpg" alt="Emerald Wilds creature collection" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-5-resultados.jpg" alt="Results: fragment restored, perfect" loading="lazy">
+  </div>
+  <div class="shots" data-l="pt">
+    <img src="../assets/img/nexyra-sudoku/en-1-inicio.jpg" alt="Home screen with Lumi, Essence and the daily challenge" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-2-mapa.jpg" alt="Emerald Wilds map with the chapter 1 levels" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-3-tablero.jpg" alt="Crystal Moon Diagonal board with notes" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-4-coleccion.jpg" alt="Emerald Wilds creature collection" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-5-resultados.jpg" alt="Results: fragment restored, perfect" loading="lazy">
+  </div>
+  <div class="shots" data-l="fr">
+    <img src="../assets/img/nexyra-sudoku/en-1-inicio.jpg" alt="Home screen with Lumi, Essence and the daily challenge" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-2-mapa.jpg" alt="Emerald Wilds map with the chapter 1 levels" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-3-tablero.jpg" alt="Crystal Moon Diagonal board with notes" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-4-coleccion.jpg" alt="Emerald Wilds creature collection" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-5-resultados.jpg" alt="Results: fragment restored, perfect" loading="lazy">
+  </div>
+  <div class="shots" data-l="de">
+    <img src="../assets/img/nexyra-sudoku/en-1-inicio.jpg" alt="Home screen with Lumi, Essence and the daily challenge" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-2-mapa.jpg" alt="Emerald Wilds map with the chapter 1 levels" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-3-tablero.jpg" alt="Crystal Moon Diagonal board with notes" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-4-coleccion.jpg" alt="Emerald Wilds creature collection" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-5-resultados.jpg" alt="Results: fragment restored, perfect" loading="lazy">
+  </div>
+  <div class="shots" data-l="it">
+    <img src="../assets/img/nexyra-sudoku/en-1-inicio.jpg" alt="Home screen with Lumi, Essence and the daily challenge" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-2-mapa.jpg" alt="Emerald Wilds map with the chapter 1 levels" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-3-tablero.jpg" alt="Crystal Moon Diagonal board with notes" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-4-coleccion.jpg" alt="Emerald Wilds creature collection" loading="lazy">
+    <img src="../assets/img/nexyra-sudoku/en-5-resultados.jpg" alt="Results: fragment restored, perfect" loading="lazy">
+  </div>
+  <div class="shots" data-l="ja">
     <img src="../assets/img/nexyra-sudoku/en-1-inicio.jpg" alt="Home screen with Lumi, Essence and the daily challenge" loading="lazy">
     <img src="../assets/img/nexyra-sudoku/en-2-mapa.jpg" alt="Emerald Wilds map with the chapter 1 levels" loading="lazy">
     <img src="../assets/img/nexyra-sudoku/en-3-tablero.jpg" alt="Crystal Moon Diagonal board with notes" loading="lazy">
@@ -94,15 +127,83 @@
     </ul>
     <div class="links"><a href="privacidad.html#en">Privacy policy</a><a href="../?lang=en#contacto">Support</a></div>
   </section>
+  <section data-l="pt">
+    <h2 class="doc-title">Como jogar</h2>
+    <p>Preencha o tabuleiro para que cada linha, cada coluna e cada caixa 3×3 tenha os números de 1 a 9 uma única vez. Cada tabuleiro resolvido devolve a vida a um canto dos reinos: as florestas voltam a ficar verdes, a lua volta a brilhar e despertam as criaturas que os protegem.</p>
+    <ul class="features">
+      <li><b>Campanha de fantasia</b>Dois reinos, Emerald Wilds e Crystal Moon, com 80 níveis, desafios e guardiões. Ashen Dominion chegará em uma atualização.</li>
+      <li><b>Aprenda com Lumi</b>As dicas não dão só a resposta: Lumi mostra a área e explica a técnica (único oculto, pares, X-Wing…).</li>
+      <li><b>Desafio diário</b>Um tabuleiro novo a cada dia, o mesmo para todos, com sequência e missões diárias e semanais.</li>
+      <li><b>Coleção</b>Criaturas e relíquias que despertam ao restaurar os reinos e manter sua sequência.</li>
+      <li><b>Variantes</b>Sudoku clássico e Diagonal.</li>
+      <li><b>Acessível</b>TalkBack, texto grande, opções de destaque e relógio que pode ser ocultado.</li>
+      <li><b>Jogo limpo</b>As dicas nunca são vendidas. Anúncios só entre níveis e não antes de terminar o primeiro capítulo; os vídeos com recompensa são opcionais. O Premium remove os anúncios entre níveis.</li>
+      <li><b>8 idiomas</b>Espanhol, inglês, português, hindi, indonésio, alemão, francês e japonês.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Política de privacidade</a><a href="../#contacto">Suporte</a></div>
+  </section>
+  <section data-l="fr">
+    <h2 class="doc-title">Comment jouer</h2>
+    <p>Remplis la grille pour que chaque ligne, chaque colonne et chaque carré de 3×3 contienne les chiffres de 1 à 9 une seule fois. Chaque grille résolue redonne vie à un coin des royaumes : les forêts reverdissent, la lune brille à nouveau et les créatures qui les gardent se réveillent.</p>
+    <ul class="features">
+      <li><b>Campagne fantastique</b>Deux royaumes, Emerald Wilds et Crystal Moon, avec 80 niveaux, des défis et des gardiens. Ashen Dominion arrivera dans une mise à jour.</li>
+      <li><b>Apprends avec Lumi</b>Les indices ne donnent pas que la réponse : Lumi montre la zone et explique la technique (singleton caché, paires, X-Wing…).</li>
+      <li><b>Défi du jour</b>Une nouvelle grille chaque jour, la même pour tous, avec une série et des missions quotidiennes et hebdomadaires.</li>
+      <li><b>Collection</b>Des créatures et des reliques qui se réveillent quand tu restaures les royaumes et gardes ta série.</li>
+      <li><b>Variantes</b>Sudoku classique et Diagonal.</li>
+      <li><b>Accessible</b>TalkBack, grand texte, options de surbrillance et horloge masquable.</li>
+      <li><b>Jeu honnête</b>Les indices ne s'achètent jamais. Des publicités seulement entre les niveaux, et pas avant la fin du premier chapitre ; les vidéos récompensées sont facultatives. Premium supprime les publicités entre les niveaux.</li>
+      <li><b>8 langues</b>Espagnol, anglais, portugais, hindi, indonésien, allemand, français et japonais.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Politique de confidentialité</a><a href="../#contacto">Assistance</a></div>
+  </section>
+  <section data-l="de">
+    <h2 class="doc-title">So wird gespielt</h2>
+    <p>Fülle das Feld so aus, dass jede Zeile, jede Spalte und jedes 3×3-Kästchen die Ziffern 1 bis 9 genau einmal enthält. Jedes gelöste Rätsel erweckt einen Teil der Reiche wieder zum Leben: Die Wälder werden wieder grün, der Mond leuchtet erneut und die Wesen, die sie bewachen, erwachen.</p>
+    <ul class="features">
+      <li><b>Fantasy-Kampagne</b>Zwei Reiche, Emerald Wilds und Crystal Moon, mit 80 Leveln, Herausforderungen und Wächtern. Ashen Dominion folgt mit einem Update.</li>
+      <li><b>Lerne mit Lumi</b>Tipps verraten nicht nur die Lösung: Lumi zeigt dir den Bereich und erklärt die Technik (versteckter Single, Paare, X-Wing …).</li>
+      <li><b>Tägliche Herausforderung</b>Jeden Tag ein neues Rätsel, für alle gleich, mit Serie sowie täglichen und wöchentlichen Missionen.</li>
+      <li><b>Sammlung</b>Wesen und Relikte, die erwachen, wenn du die Reiche rettest und deine Serie hältst.</li>
+      <li><b>Varianten</b>Klassisches und Diagonal-Sudoku.</li>
+      <li><b>Barrierearm</b>TalkBack, große Schrift, Hervorhebungsoptionen und ausblendbare Uhr.</li>
+      <li><b>Faires Spiel</b>Tipps kann man nie kaufen. Werbung nur zwischen Leveln und erst nach dem ersten Kapitel; Belohnungsvideos sind freiwillig. Premium entfernt die Werbung zwischen den Leveln.</li>
+      <li><b>8 Sprachen</b>Spanisch, Englisch, Portugiesisch, Hindi, Indonesisch, Deutsch, Französisch und Japanisch.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Datenschutzerklärung</a><a href="../#contacto">Support</a></div>
+  </section>
+  <section data-l="it">
+    <h2 class="doc-title">Come si gioca</h2>
+    <p>Completa la griglia in modo che ogni riga, ogni colonna e ogni riquadro 3×3 contenga i numeri da 1 a 9 una sola volta. Ogni griglia risolta riporta in vita un angolo dei regni: i boschi tornano verdi, la luna torna a splendere e si risvegliano le creature che li custodiscono.</p>
+    <ul class="features">
+      <li><b>Campagna fantasy</b>Due regni, Emerald Wilds e Crystal Moon, con 80 livelli, sfide e guardiani. Ashen Dominion arriverà con un aggiornamento.</li>
+      <li><b>Impara con Lumi</b>Gli aiuti non danno solo la risposta: Lumi ti indica la zona e ti spiega la tecnica (singolo nascosto, coppie, X-Wing…).</li>
+      <li><b>Sfida quotidiana</b>Una griglia nuova ogni giorno, uguale per tutti, con serie e missioni giornaliere e settimanali.</li>
+      <li><b>Collezione</b>Creature e reliquie che si risvegliano quando ripristini i regni e mantieni la tua serie.</li>
+      <li><b>Varianti</b>Sudoku classico e Diagonale.</li>
+      <li><b>Accessibile</b>TalkBack, testo grande, opzioni di evidenziazione e orologio nascondibile.</li>
+      <li><b>Gioco leale</b>Gli aiuti non si comprano mai. Pubblicità solo tra un livello e l'altro e non prima di finire il primo capitolo; i video con premio sono facoltativi. Premium toglie la pubblicità tra i livelli.</li>
+      <li><b>8 lingue</b>Spagnolo, inglese, portoghese, hindi, indonesiano, tedesco, francese e giapponese.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Informativa sulla privacy</a><a href="../#contacto">Assistenza</a></div>
+  </section>
+  <section data-l="ja">
+    <h2 class="doc-title">遊び方</h2>
+    <p>各行・各列・各3×3のブロックに1から9までの数字が1回ずつ入るように盤面を埋めよう。盤面を解くたびに王国の一角がよみがえります。森は緑を取り戻し、月はふたたび輝き、王国を守る生き物たちが目を覚まします。</p>
+    <ul class="features">
+      <li><b>ファンタジーキャンペーン</b>Emerald WildsとCrystal Moonの2つの王国に80レベル、チャレンジ、守護者。Ashen Dominionはアップデートで登場予定。</li>
+      <li><b>ルミと学ぼう</b>ヒントは答えを教えるだけではありません。ルミが場所を示し、テクニック（隠れたシングル、ペア、X-Wingなど）を説明します。</li>
+      <li><b>デイリーチャレンジ</b>毎日新しい盤面。全員同じ問題で、連続記録とデイリー・ウィークリーミッションつき。</li>
+      <li><b>コレクション</b>王国をよみがえらせ、連続記録を続けると目覚める生き物や遺物。</li>
+      <li><b>バリエーション</b>クラシック数独と対角線数独。</li>
+      <li><b>アクセシビリティ</b>TalkBack、大きな文字、ハイライト設定、非表示にできる時計。</li>
+      <li><b>フェアプレイ</b>ヒントは販売しません。広告はレベルの合間のみで、最初の章を終えるまでは出ません。報酬付き動画は任意です。プレミアムでレベル間の広告がなくなります。</li>
+      <li><b>8言語</b>スペイン語、英語、ポルトガル語、ヒンディー語、インドネシア語、ドイツ語、フランス語、日本語。</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">プライバシーポリシー</a><a href="../#contacto">サポート</a></div>
+  </section>
 
   <footer>© 2026 NEXYRA GAMES · <a href="../privacidad/">Privacidad / Privacy</a> · <a href="../licencias/">Licencias / Licenses</a><br>Google Play y el logotipo de Google Play son marcas de Google LLC. / Google Play and the Google Play logo are trademarks of Google LLC.</footer>
 </main>
-<script>
-  document.querySelectorAll("[data-set]").forEach(function (b) {
-    var sync = function () { document.querySelectorAll("[data-set]").forEach(function (x) { x.classList.toggle("on", x.dataset.set === document.documentElement.lang); }); };
-    b.addEventListener("click", function () { document.documentElement.lang = b.dataset.set; history.replaceState(null, "", "?lang=" + b.dataset.set); sync(); });
-    sync();
-  });
-</script>
 </body>
 </html>

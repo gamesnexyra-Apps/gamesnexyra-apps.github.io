@@ -12,20 +12,13 @@
 <meta property="og:image" content="../assets/img/pintipop-cover.png">
 <link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/page.css">
-<script>
-  // Idioma: ?lang=es|en, si no el del navegador (español si empieza por "es"; si no, inglés)
-  (function () {
-    var q = new URLSearchParams(location.search).get("lang");
-    var l = q === "es" || q === "en" ? q : (/^es/i.test(navigator.language || "es") ? "es" : "en");
-    document.documentElement.lang = l;
-  })();
-</script>
+<script src="../js/page-lang.js"></script>
 </head>
 <body>
 <main>
   <div class="topbar">
     <a class="brand" href="../"><img src="../assets/img/nexyra-emblem.png" alt="">NEXYRA GAMES</a>
-    <nav class="langs" style="margin:0"><button type="button" data-set="es">ES</button><button type="button" data-set="en">EN</button></nav>
+    <nav class="langs" data-langs style="margin:0" aria-label="Idioma / Language"></nav>
   </div>
 
   <div class="game-hero">
@@ -34,18 +27,23 @@
       <h1>Pintipop</h1>
       <p class="tagline" data-l="es">Colorear sin salirse de la raya, para niños de 2 a 8 años.</p>
       <p class="tagline" data-l="en">Coloring that never goes outside the lines, for kids aged 2 to 8.</p>
+      <p class="tagline" data-l="pt">Colorir sem sair da linha, para crianças de 2 a 8 anos.</p>
+      <p class="tagline" data-l="fr">Colorier sans dépasser, pour les enfants de 2 à 8 ans.</p>
+      <p class="tagline" data-l="de">Ausmalen, ohne über den Rand zu malen – für Kinder von 2 bis 8 Jahren.</p>
+      <p class="tagline" data-l="it">Colorare senza uscire dai bordi, per bambini dai 2 agli 8 anni.</p>
+      <p class="tagline" data-l="ja">はみ出さないぬりえ。2〜8歳の子ども向け。</p>
       <div class="badges">
-        <span class="badge" data-l="es">Colorear</span><span class="badge" data-l="en">Coloring</span>
-        <span class="badge" data-l="es">2–8 años</span><span class="badge" data-l="en">Ages 2–8</span>
-        <span class="badge" data-l="es">Sin anuncios</span><span class="badge" data-l="en">No ads</span>
-        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span>
-        <span class="badge" data-l="es">Familias de Google Play</span><span class="badge" data-l="en">Google Play Families</span>
+        <span class="badge" data-l="es">Colorear</span><span class="badge" data-l="en">Coloring</span><span class="badge" data-l="pt">Colorir</span><span class="badge" data-l="fr">Coloriage</span><span class="badge" data-l="de">Ausmalen</span><span class="badge" data-l="it">Colorare</span><span class="badge" data-l="ja">ぬりえ</span>
+        <span class="badge" data-l="es">2–8 años</span><span class="badge" data-l="en">Ages 2–8</span><span class="badge" data-l="pt">2–8 anos</span><span class="badge" data-l="fr">2–8 ans</span><span class="badge" data-l="de">2–8 Jahre</span><span class="badge" data-l="it">2–8 anni</span><span class="badge" data-l="ja">2〜8歳</span>
+        <span class="badge" data-l="es">Sin anuncios</span><span class="badge" data-l="en">No ads</span><span class="badge" data-l="pt">Sem anúncios</span><span class="badge" data-l="fr">Sans publicité</span><span class="badge" data-l="de">Ohne Werbung</span><span class="badge" data-l="it">Senza pubblicità</span><span class="badge" data-l="ja">広告なし</span>
+        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span><span class="badge" data-l="pt">Offline</span><span class="badge" data-l="fr">Hors ligne</span><span class="badge" data-l="de">Offline</span><span class="badge" data-l="it">Offline</span><span class="badge" data-l="ja">オフライン</span>
+        <span class="badge" data-l="es">Familias de Google Play</span><span class="badge" data-l="en">Google Play Families</span><span class="badge" data-l="pt">Famílias do Google Play</span><span class="badge" data-l="fr">Familles Google Play</span><span class="badge" data-l="de">Google Play Familien</span><span class="badge" data-l="it">Famiglie di Google Play</span><span class="badge" data-l="ja">Google Play ファミリー</span>
       </div>
       <!-- Al publicar: añade href="https://play.google.com/store/apps/details?id=com.pintipop.app",
            quita aria-disabled y añade la clase "live" -->
       <a class="play" aria-disabled="true">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.6v12.8c0 .8.9 1.3 1.6.9l10-6.4c.6-.4.6-1.3 0-1.7l-10-6.4C8.9 4.3 8 4.8 8 5.6Z"/></svg>
-        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><b>Google Play</b></span>
+        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><small data-l="pt">Em breve no</small><small data-l="fr">Bientôt sur</small><small data-l="de">Demnächst bei</small><small data-l="it">Presto su</small><small data-l="ja">近日公開</small><b>Google Play</b></span>
       </a>
     </div>
   </div>
@@ -63,6 +61,41 @@
     <img src="../assets/img/pintipop/en-3-categorias.jpg" alt="Picture categories" loading="lazy">
     <img src="../assets/img/pintipop/en-4-obra_de_arte.jpg" alt="Stars and reward stickers" loading="lazy">
     <img src="../assets/img/pintipop/en-5-galeria.jpg" alt="Gallery with a golden frame" loading="lazy">
+  </div>
+  <div class="shots" data-l="pt">
+    <img src="../assets/img/pintipop/pt-1-pintar.jpg" alt="A tinta não sai da linha" loading="lazy">
+    <img src="../assets/img/pintipop/pt-2-pinceles_magicos.jpg" alt="Pincéis mágicos" loading="lazy">
+    <img src="../assets/img/pintipop/pt-3-categorias.jpg" alt="Categorias de desenhos" loading="lazy">
+    <img src="../assets/img/pintipop/pt-4-obra_de_arte.jpg" alt="Estrelas e adesivos de prêmio" loading="lazy">
+    <img src="../assets/img/pintipop/pt-5-galeria.jpg" alt="Galeria com moldura dourada" loading="lazy">
+  </div>
+  <div class="shots" data-l="fr">
+    <img src="../assets/img/pintipop/fr-1-pintar.jpg" alt="La peinture ne dépasse pas" loading="lazy">
+    <img src="../assets/img/pintipop/fr-2-pinceles_magicos.jpg" alt="Pinceaux magiques" loading="lazy">
+    <img src="../assets/img/pintipop/fr-3-categorias.jpg" alt="Catégories de dessins" loading="lazy">
+    <img src="../assets/img/pintipop/fr-4-obra_de_arte.jpg" alt="Étoiles et autocollants" loading="lazy">
+    <img src="../assets/img/pintipop/fr-5-galeria.jpg" alt="Galerie avec cadre doré" loading="lazy">
+  </div>
+  <div class="shots" data-l="de">
+    <img src="../assets/img/pintipop/de-1-pintar.jpg" alt="Die Farbe bleibt im Bild" loading="lazy">
+    <img src="../assets/img/pintipop/de-2-pinceles_magicos.jpg" alt="Zauberpinsel" loading="lazy">
+    <img src="../assets/img/pintipop/de-3-categorias.jpg" alt="Bildkategorien" loading="lazy">
+    <img src="../assets/img/pintipop/de-4-obra_de_arte.jpg" alt="Sterne und Belohnungssticker" loading="lazy">
+    <img src="../assets/img/pintipop/de-5-galeria.jpg" alt="Galerie mit goldenem Rahmen" loading="lazy">
+  </div>
+  <div class="shots" data-l="it">
+    <img src="../assets/img/pintipop/it-1-pintar.jpg" alt="Il colore non esce dai bordi" loading="lazy">
+    <img src="../assets/img/pintipop/it-2-pinceles_magicos.jpg" alt="Pennelli magici" loading="lazy">
+    <img src="../assets/img/pintipop/it-3-categorias.jpg" alt="Categorie di disegni" loading="lazy">
+    <img src="../assets/img/pintipop/it-4-obra_de_arte.jpg" alt="Stelle e adesivi premio" loading="lazy">
+    <img src="../assets/img/pintipop/it-5-galeria.jpg" alt="Galleria con cornice dorata" loading="lazy">
+  </div>
+  <div class="shots" data-l="ja">
+    <img src="../assets/img/pintipop/ja-1-pintar.jpg" alt="色がはみ出さない" loading="lazy">
+    <img src="../assets/img/pintipop/ja-2-pinceles_magicos.jpg" alt="魔法のブラシ" loading="lazy">
+    <img src="../assets/img/pintipop/ja-3-categorias.jpg" alt="ぬりえのカテゴリー" loading="lazy">
+    <img src="../assets/img/pintipop/ja-4-obra_de_arte.jpg" alt="スターとごほうびシール" loading="lazy">
+    <img src="../assets/img/pintipop/ja-5-galeria.jpg" alt="金色の額縁のギャラリー" loading="lazy">
   </div>
 
   <section data-l="es">
@@ -91,6 +124,71 @@
     </ul>
     <div class="links"><a href="privacidad.html#en">Privacy policy</a><a href="#soporte">Support</a></div>
   </section>
+  <section data-l="pt">
+    <h2 class="doc-title">Como jogar</h2>
+    <p>Escolha uma cor e pinte com o dedo: a cor fica dentro de cada área do desenho, mesmo quando o traço escapa. O balde mágico preenche uma área com um toque e os pincéis mágicos pintam com arco-íris, purpurina, listras, bolinhas ou corações.</p>
+    <ul class="features">
+      <li><b>240 desenhos</b>12 categorias; 40 grátis e amostras grátis em cada categoria.</li>
+      <li><b>Sem texto</b>A parte infantil funciona só com ícones, para crianças que ainda não leem.</li>
+      <li><b>Prêmios</b>Estrelas, adesivos e uma galeria com moldura dourada.</li>
+      <li><b>Área dos pais</b>Protegida por uma pergunta para adultos: compras, ajustes e links.</li>
+      <li><b>Limite diário</b>Tempo de jogo por dia opcional (15, 30 ou 60 minutos).</li>
+      <li><b>Sem anúncios</b>Nem dados pessoais. Compras de pagamento único, sem assinaturas.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Política de privacidade</a><a href="#soporte">Suporte</a></div>
+  </section>
+  <section data-l="fr">
+    <h2 class="doc-title">Comment jouer</h2>
+    <p>Choisis une couleur et peins avec le doigt : la couleur reste dans chaque zone du dessin, même quand le trait s'échappe. Le pot magique remplit une zone d'une seule touche et les pinceaux magiques peignent avec des arcs-en-ciel, des paillettes, des rayures, des pois ou des cœurs.</p>
+    <ul class="features">
+      <li><b>240 dessins</b>12 catégories ; 40 gratuits et des dessins d'essai dans chaque catégorie.</li>
+      <li><b>Sans texte</b>L'espace enfant fonctionne seulement avec des icônes, pour les enfants qui ne lisent pas encore.</li>
+      <li><b>Récompenses</b>Étoiles, autocollants et une galerie avec cadre doré.</li>
+      <li><b>Espace parents</b>Protégé par une question pour adultes : achats, réglages et liens.</li>
+      <li><b>Limite quotidienne</b>Temps de jeu par jour en option (15, 30 ou 60 minutes).</li>
+      <li><b>Sans publicité</b>Ni données personnelles. Achats uniques, sans abonnement.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Politique de confidentialité</a><a href="#soporte">Assistance</a></div>
+  </section>
+  <section data-l="de">
+    <h2 class="doc-title">So wird gespielt</h2>
+    <p>Wähle eine Farbe und male mit dem Finger: Die Farbe bleibt in jeder Fläche des Bildes, auch wenn der Strich danebengeht. Der Zaubereimer füllt eine Fläche mit einem Tipp, und die Zauberpinsel malen mit Regenbogen, Glitzer, Streifen, Punkten oder Herzen.</p>
+    <ul class="features">
+      <li><b>240 Bilder</b>12 Kategorien; 40 kostenlos und Gratis-Proben in jeder Kategorie.</li>
+      <li><b>Ohne Text</b>Der Kinderbereich funktioniert nur mit Symbolen – für Kinder, die noch nicht lesen.</li>
+      <li><b>Belohnungen</b>Sterne, Sticker und eine Galerie mit goldenen Rahmen.</li>
+      <li><b>Elternbereich</b>Geschützt durch eine Frage für Erwachsene: Käufe, Einstellungen und Links.</li>
+      <li><b>Tageslimit</b>Optionale Spielzeit pro Tag (15, 30 oder 60 Minuten).</li>
+      <li><b>Ohne Werbung</b>Und ohne persönliche Daten. Einmalkäufe, keine Abos.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Datenschutzerklärung</a><a href="#soporte">Support</a></div>
+  </section>
+  <section data-l="it">
+    <h2 class="doc-title">Come si gioca</h2>
+    <p>Scegli un colore e dipingi con il dito: il colore resta dentro ogni zona del disegno, anche quando il tratto scappa. Il secchiello magico riempie una zona con un tocco e i pennelli magici dipingono con arcobaleni, brillantini, righe, pois o cuori.</p>
+    <ul class="features">
+      <li><b>240 disegni</b>12 categorie; 40 gratis e disegni di prova in ogni categoria.</li>
+      <li><b>Senza testo</b>La parte per i bambini funziona solo con icone, per chi non sa ancora leggere.</li>
+      <li><b>Premi</b>Stelle, adesivi e una galleria con cornici dorate.</li>
+      <li><b>Area genitori</b>Protetta da una domanda per adulti: acquisti, impostazioni e link.</li>
+      <li><b>Limite giornaliero</b>Tempo di gioco al giorno facoltativo (15, 30 o 60 minuti).</li>
+      <li><b>Senza pubblicità</b>E senza dati personali. Acquisti una tantum, senza abbonamenti.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Informativa sulla privacy</a><a href="#soporte">Assistenza</a></div>
+  </section>
+  <section data-l="ja">
+    <h2 class="doc-title">遊び方</h2>
+    <p>色を選んで指でぬろう。線の外まで指が動いても、色は絵の各エリアの中にきれいにおさまります。魔法のバケツはタップひとつでエリアをぬりつぶし、魔法のブラシは虹色、キラキラ、しましま、水玉、ハートでぬれます。</p>
+    <ul class="features">
+      <li><b>240枚のぬりえ</b>12カテゴリー。40枚は無料、どのカテゴリーにも無料のお試しあり。</li>
+      <li><b>文字なし</b>子ども用の画面はアイコンだけ。まだ字が読めない子でも遊べます。</li>
+      <li><b>ごほうび</b>スター、シール、金色の額縁のギャラリー。</li>
+      <li><b>保護者エリア</b>大人向けの質問で保護：購入・設定・リンク。</li>
+      <li><b>1日の制限</b>1日のプレイ時間を設定可能（15・30・60分）。</li>
+      <li><b>広告なし</b>個人情報も集めません。買い切りの購入のみで、定期購入はありません。</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">プライバシーポリシー</a><a href="#soporte">サポート</a></div>
+  </section>
 
   <span id="soporte"></span>
   <section data-l="es">
@@ -115,15 +213,63 @@
     <p><b>There is no music or sound.</b><br>Check the music and sound buttons in <b>Settings</b> and the phone's media volume.</p>
     <p><b>Does it ask for permissions or data?</b><br>It collects no personal data and shows no ads. More details in the <a href="privacidad.html#en">privacy policy</a>.</p>
   </section>
+  <section data-l="pt">
+    <h2 class="doc-title">Suporte</h2>
+    <p>Algo não funciona ou você tem uma ideia? Escreva para <a href="mailto:gamesnexyra@gmail.com?subject=Pintipop%3A%20support">gamesnexyra@gmail.com</a>. Respondemos em 24–48 h úteis. Se puder, informe o modelo do celular e a versão do Android (o botão <b>Sugestões</b> dos Ajustes já os adiciona).</p>
+    <h2>Perguntas frequentes</h2>
+    <p><b>Como entro nos Ajustes?</b><br>Toque na engrenagem do menu principal e responda à pergunta para adultos.</p>
+    <p><b>Troquei de celular ou reinstalei: como recupero minhas compras?</b><br>Entre com a mesma conta do Google e toque em <b>Ajustes → Restaurar compras</b>. As compras são de pagamento único e não expiram.</p>
+    <p><b>Como limito o tempo de jogo?</b><br>Nos <b>Ajustes</b>, escolha 15, 30 ou 60 minutos por dia (∞ = sem limite). Quando o tempo acaba, o Pinti vai dormir; um adulto pode dar mais 15 minutos.</p>
+    <p><b>Onde estão os desenhos do meu filho?</b><br>Na galeria (botão do quadro no menu principal). Eles ficam salvos só no celular: se você desinstalar o app, eles são apagados.</p>
+    <p><b>Não ouço a música nem os sons.</b><br>Confira os botões de música e sons nos <b>Ajustes</b> e o volume de mídia do celular.</p>
+    <p><b>Ele pede permissões ou dados?</b><br>Não coleta dados pessoais nem mostra anúncios. Mais detalhes na <a href="privacidad.html#en">política de privacidade</a>.</p>
+  </section>
+  <section data-l="fr">
+    <h2 class="doc-title">Assistance</h2>
+    <p>Quelque chose ne fonctionne pas, ou vous avez une idée ? Écrivez-nous à <a href="mailto:gamesnexyra@gmail.com?subject=Pintipop%3A%20support">gamesnexyra@gmail.com</a>. Nous répondons sous 24 à 48 h ouvrées. Si possible, indiquez le modèle du téléphone et la version d'Android (le bouton <b>Suggestions</b> des Réglages les ajoute pour vous).</p>
+    <h2>Questions fréquentes</h2>
+    <p><b>Comment ouvrir les Réglages ?</b><br>Touchez l'engrenage du menu principal et répondez à la question pour adultes.</p>
+    <p><b>J'ai changé de téléphone ou réinstallé l'app : comment récupérer mes achats ?</b><br>Connectez-vous avec le même compte Google et touchez <b>Réglages → Restaurer les achats</b>. Les achats sont uniques et n'expirent jamais.</p>
+    <p><b>Comment limiter le temps de jeu ?</b><br>Dans les <b>Réglages</b>, choisissez 15, 30 ou 60 minutes par jour (∞ = sans limite). Quand le temps est écoulé, Pinti s'endort ; un adulte peut ajouter 15 minutes.</p>
+    <p><b>Où sont les dessins de mon enfant ?</b><br>Dans la galerie (bouton du tableau dans le menu principal). Ils sont enregistrés uniquement sur le téléphone : désinstaller l'app les efface.</p>
+    <p><b>Il n'y a ni musique ni son.</b><br>Vérifiez les boutons de musique et de sons dans les <b>Réglages</b> et le volume multimédia du téléphone.</p>
+    <p><b>Demande-t-elle des autorisations ou des données ?</b><br>Elle ne collecte aucune donnée personnelle et n'affiche pas de publicité. Plus de détails dans la <a href="privacidad.html#en">politique de confidentialité</a>.</p>
+  </section>
+  <section data-l="de">
+    <h2 class="doc-title">Support</h2>
+    <p>Funktioniert etwas nicht oder hast du eine Idee? Schreib uns an <a href="mailto:gamesnexyra@gmail.com?subject=Pintipop%3A%20support">gamesnexyra@gmail.com</a>. Wir antworten innerhalb von 24–48 Stunden (werktags). Wenn möglich, nenne uns dein Handymodell und die Android-Version (die Schaltfläche <b>Feedback</b> in den Einstellungen fügt sie automatisch hinzu).</p>
+    <h2>Häufige Fragen</h2>
+    <p><b>Wie öffne ich die Einstellungen?</b><br>Tippe im Hauptmenü auf das Zahnrad und beantworte die Frage für Erwachsene.</p>
+    <p><b>Neues Handy oder App neu installiert: Wie bekomme ich meine Käufe zurück?</b><br>Melde dich mit demselben Google-Konto an und tippe auf <b>Einstellungen → Käufe wiederherstellen</b>. Käufe sind einmalig und laufen nie ab.</p>
+    <p><b>Wie begrenze ich die Spielzeit?</b><br>Wähle in den <b>Einstellungen</b> 15, 30 oder 60 Minuten pro Tag (∞ = kein Limit). Ist die Zeit um, schläft Pinti ein; ein Erwachsener kann 15 Minuten dazugeben.</p>
+    <p><b>Wo sind die Bilder meines Kindes?</b><br>In der Galerie (Bilder-Schaltfläche im Hauptmenü). Sie werden nur auf dem Handy gespeichert: Wer die App deinstalliert, löscht sie.</p>
+    <p><b>Es gibt keine Musik und keine Töne.</b><br>Prüfe die Schalter für Musik und Töne in den <b>Einstellungen</b> und die Medienlautstärke des Handys.</p>
+    <p><b>Fragt die App nach Berechtigungen oder Daten?</b><br>Sie sammelt keine persönlichen Daten und zeigt keine Werbung. Mehr dazu in der <a href="privacidad.html#en">Datenschutzerklärung</a>.</p>
+  </section>
+  <section data-l="it">
+    <h2 class="doc-title">Assistenza</h2>
+    <p>Qualcosa non funziona o hai un'idea? Scrivici a <a href="mailto:gamesnexyra@gmail.com?subject=Pintipop%3A%20support">gamesnexyra@gmail.com</a>. Rispondiamo entro 24–48 ore lavorative. Se puoi, indicaci il modello del telefono e la versione di Android (il pulsante <b>Suggerimenti</b> nelle Impostazioni li aggiunge già).</p>
+    <h2>Domande frequenti</h2>
+    <p><b>Come entro nelle Impostazioni?</b><br>Tocca l'ingranaggio nel menu principale e rispondi alla domanda per adulti.</p>
+    <p><b>Ho cambiato telefono o reinstallato: come recupero i miei acquisti?</b><br>Accedi con lo stesso account Google e tocca <b>Impostazioni → Ripristina acquisti</b>. Gli acquisti sono una tantum e non scadono.</p>
+    <p><b>Come limito il tempo di gioco?</b><br>Nelle <b>Impostazioni</b> scegli 15, 30 o 60 minuti al giorno (∞ = senza limite). Quando il tempo finisce, Pinti va a dormire; un adulto può aggiungere 15 minuti.</p>
+    <p><b>Dove sono i disegni di mio figlio?</b><br>Nella galleria (pulsante del quadro nel menu principale). Sono salvati solo sul telefono: disinstallando l'app vengono cancellati.</p>
+    <p><b>Non si sentono la musica né i suoni.</b><br>Controlla i pulsanti di musica e suoni nelle <b>Impostazioni</b> e il volume multimediale del telefono.</p>
+    <p><b>Chiede permessi o dati?</b><br>Non raccoglie dati personali e non mostra pubblicità. Più dettagli nell'<a href="privacidad.html#en">informativa sulla privacy</a>.</p>
+  </section>
+  <section data-l="ja">
+    <h2 class="doc-title">サポート</h2>
+    <p>うまく動かないときや、アイデアがあるときは <a href="mailto:gamesnexyra@gmail.com?subject=Pintipop%3A%20support">gamesnexyra@gmail.com</a> までご連絡ください。24〜48時間以内（営業日）にご返信します。可能であれば、端末の機種とAndroidのバージョンをお知らせください（設定の<b>ご意見</b>ボタンなら自動で入ります）。</p>
+    <h2>よくある質問</h2>
+    <p><b>設定はどこから開きますか？</b><br>メインメニューの歯車をタップし、大人向けの質問に答えてください。</p>
+    <p><b>機種変更・再インストールしました。購入したものを戻すには？</b><br>同じGoogleアカウントでログインし、<b>設定 → 購入を復元</b>をタップしてください。購入は買い切りで、期限はありません。</p>
+    <p><b>プレイ時間を制限するには？</b><br><b>設定</b>で1日15・30・60分を選びます（∞は制限なし）。時間になるとピンティが眠ります。大人が15分追加できます。</p>
+    <p><b>子どもがぬった作品はどこにありますか？</b><br>ギャラリー（メインメニューの絵のボタン）にあります。作品は端末の中だけに保存され、アプリを削除すると消えます。</p>
+    <p><b>音楽や効果音が聞こえません。</b><br><b>設定</b>の音楽・効果音のボタンと、端末のメディア音量を確認してください。</p>
+    <p><b>権限や個人情報を求めますか？</b><br>個人情報は集めず、広告も表示しません。詳しくは<a href="privacidad.html#en">プライバシーポリシー</a>をご覧ください。</p>
+  </section>
 
   <footer>© 2026 NEXYRA GAMES · <a href="../privacidad/">Privacidad / Privacy</a> · <a href="../licencias/">Licencias / Licenses</a><br>Google Play y el logotipo de Google Play son marcas de Google LLC. / Google Play and the Google Play logo are trademarks of Google LLC.</footer>
 </main>
-<script>
-  document.querySelectorAll("[data-set]").forEach(function (b) {
-    var sync = function () { document.querySelectorAll("[data-set]").forEach(function (x) { x.classList.toggle("on", x.dataset.set === document.documentElement.lang); }); };
-    b.addEventListener("click", function () { document.documentElement.lang = b.dataset.set; history.replaceState(null, "", "?lang=" + b.dataset.set + location.hash); sync(); });
-    sync();
-  });
-</script>
 </body>
 </html>

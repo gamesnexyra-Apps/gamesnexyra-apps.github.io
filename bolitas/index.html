@@ -12,20 +12,13 @@
 <meta property="og:image" content="../assets/img/bolitas-cover.png">
 <link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/page.css">
-<script>
-  // Idioma: ?lang=es|en, si no el del navegador (español si empieza por "es"; si no, inglés)
-  (function () {
-    var q = new URLSearchParams(location.search).get("lang");
-    var l = q === "es" || q === "en" ? q : (/^es/i.test(navigator.language || "es") ? "es" : "en");
-    document.documentElement.lang = l;
-  })();
-</script>
+<script src="../js/page-lang.js"></script>
 </head>
 <body>
 <main>
   <div class="topbar">
     <a class="brand" href="../"><img src="../assets/img/nexyra-emblem.png" alt="">NEXYRA GAMES</a>
-    <nav class="langs" style="margin:0"><button type="button" data-set="es">ES</button><button type="button" data-set="en">EN</button></nav>
+    <nav class="langs" data-langs style="margin:0" aria-label="Idioma / Language"></nav>
   </div>
 
   <div class="game-hero">
@@ -34,17 +27,22 @@
       <h1>Bolitas</h1>
       <p class="tagline" data-l="es">Ordena las bolitas de colores en sus tubos.</p>
       <p class="tagline" data-l="en">Sort the colorful balls into their tubes.</p>
+      <p class="tagline" data-l="pt">Organize as bolinhas coloridas nos seus tubos.</p>
+      <p class="tagline" data-l="fr">Range les billes de couleur dans leurs tubes.</p>
+      <p class="tagline" data-l="de">Sortiere die bunten Kugeln in ihre Röhren.</p>
+      <p class="tagline" data-l="it">Metti in ordine le palline colorate nei loro tubi.</p>
+      <p class="tagline" data-l="ja">カラフルなボールを試験管に仕分けよう。</p>
       <div class="badges">
-        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span>
-        <span class="badge" data-l="es">Puzle</span><span class="badge" data-l="en">Puzzle</span>
-        <span class="badge" data-l="es">Para todas las edades</span><span class="badge" data-l="en">All ages</span>
-        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span>
-        <span class="badge" data-l="es">9 idiomas</span><span class="badge" data-l="en">9 languages</span>
+        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span><span class="badge soon" data-l="pt">Em breve</span><span class="badge soon" data-l="fr">Bientôt</span><span class="badge soon" data-l="de">Demnächst</span><span class="badge soon" data-l="it">Prossimamente</span><span class="badge soon" data-l="ja">近日公開</span>
+        <span class="badge" data-l="es">Puzle</span><span class="badge" data-l="en">Puzzle</span><span class="badge" data-l="pt">Quebra-cabeça</span><span class="badge" data-l="fr">Puzzle</span><span class="badge" data-l="de">Puzzle</span><span class="badge" data-l="it">Puzzle</span><span class="badge" data-l="ja">パズル</span>
+        <span class="badge" data-l="es">Para todas las edades</span><span class="badge" data-l="en">All ages</span><span class="badge" data-l="pt">Para todas as idades</span><span class="badge" data-l="fr">Pour tous les âges</span><span class="badge" data-l="de">Für alle Altersgruppen</span><span class="badge" data-l="it">Per tutte le età</span><span class="badge" data-l="ja">全年齢向け</span>
+        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span><span class="badge" data-l="pt">Offline</span><span class="badge" data-l="fr">Hors ligne</span><span class="badge" data-l="de">Offline</span><span class="badge" data-l="it">Offline</span><span class="badge" data-l="ja">オフライン</span>
+        <span class="badge" data-l="es">9 idiomas</span><span class="badge" data-l="en">9 languages</span><span class="badge" data-l="pt">9 idiomas</span><span class="badge" data-l="fr">9 langues</span><span class="badge" data-l="de">9 Sprachen</span><span class="badge" data-l="it">9 lingue</span><span class="badge" data-l="ja">9言語</span>
       </div>
       <!-- Al publicar: cambia href por el enlace de Google Play y añade la clase "live" -->
       <a class="play" aria-disabled="true">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.6v12.8c0 .8.9 1.3 1.6.9l10-6.4c.6-.4.6-1.3 0-1.7l-10-6.4C8.9 4.3 8 4.8 8 5.6Z"/></svg>
-        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><b>Google Play</b></span>
+        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><small data-l="pt">Em breve no</small><small data-l="fr">Bientôt sur</small><small data-l="de">Demnächst bei</small><small data-l="it">Presto su</small><small data-l="ja">近日公開</small><b>Google Play</b></span>
       </a>
     </div>
   </div>
@@ -57,6 +55,41 @@
     <img src="../assets/img/bolitas/es-5-tienda.jpg" alt="Tienda de temas visuales" loading="lazy">
   </div>
   <div class="shots" data-l="en">
+    <img src="../assets/img/bolitas/en-1-juego.jpg" alt="A game with a ball lifted" loading="lazy">
+    <img src="../assets/img/bolitas/en-2-tapones.jpg" alt="Full tubes sealed with corks" loading="lazy">
+    <img src="../assets/img/bolitas/en-3-victoria.jpg" alt="Win with three stars" loading="lazy">
+    <img src="../assets/img/bolitas/en-4-niebla.jpg" alt="Special level with fog" loading="lazy">
+    <img src="../assets/img/bolitas/en-5-tienda.jpg" alt="Visual themes shop" loading="lazy">
+  </div>
+  <div class="shots" data-l="pt">
+    <img src="../assets/img/bolitas/en-1-juego.jpg" alt="A game with a ball lifted" loading="lazy">
+    <img src="../assets/img/bolitas/en-2-tapones.jpg" alt="Full tubes sealed with corks" loading="lazy">
+    <img src="../assets/img/bolitas/en-3-victoria.jpg" alt="Win with three stars" loading="lazy">
+    <img src="../assets/img/bolitas/en-4-niebla.jpg" alt="Special level with fog" loading="lazy">
+    <img src="../assets/img/bolitas/en-5-tienda.jpg" alt="Visual themes shop" loading="lazy">
+  </div>
+  <div class="shots" data-l="fr">
+    <img src="../assets/img/bolitas/en-1-juego.jpg" alt="A game with a ball lifted" loading="lazy">
+    <img src="../assets/img/bolitas/en-2-tapones.jpg" alt="Full tubes sealed with corks" loading="lazy">
+    <img src="../assets/img/bolitas/en-3-victoria.jpg" alt="Win with three stars" loading="lazy">
+    <img src="../assets/img/bolitas/en-4-niebla.jpg" alt="Special level with fog" loading="lazy">
+    <img src="../assets/img/bolitas/en-5-tienda.jpg" alt="Visual themes shop" loading="lazy">
+  </div>
+  <div class="shots" data-l="de">
+    <img src="../assets/img/bolitas/en-1-juego.jpg" alt="A game with a ball lifted" loading="lazy">
+    <img src="../assets/img/bolitas/en-2-tapones.jpg" alt="Full tubes sealed with corks" loading="lazy">
+    <img src="../assets/img/bolitas/en-3-victoria.jpg" alt="Win with three stars" loading="lazy">
+    <img src="../assets/img/bolitas/en-4-niebla.jpg" alt="Special level with fog" loading="lazy">
+    <img src="../assets/img/bolitas/en-5-tienda.jpg" alt="Visual themes shop" loading="lazy">
+  </div>
+  <div class="shots" data-l="it">
+    <img src="../assets/img/bolitas/en-1-juego.jpg" alt="A game with a ball lifted" loading="lazy">
+    <img src="../assets/img/bolitas/en-2-tapones.jpg" alt="Full tubes sealed with corks" loading="lazy">
+    <img src="../assets/img/bolitas/en-3-victoria.jpg" alt="Win with three stars" loading="lazy">
+    <img src="../assets/img/bolitas/en-4-niebla.jpg" alt="Special level with fog" loading="lazy">
+    <img src="../assets/img/bolitas/en-5-tienda.jpg" alt="Visual themes shop" loading="lazy">
+  </div>
+  <div class="shots" data-l="ja">
     <img src="../assets/img/bolitas/en-1-juego.jpg" alt="A game with a ball lifted" loading="lazy">
     <img src="../assets/img/bolitas/en-2-tapones.jpg" alt="Full tubes sealed with corks" loading="lazy">
     <img src="../assets/img/bolitas/en-3-victoria.jpg" alt="Win with three stars" loading="lazy">
@@ -94,15 +127,83 @@
     </ul>
     <div class="links"><a href="privacidad.html#en">Privacy policy</a><a href="../?lang=en#contacto">Support</a></div>
   </section>
+  <section data-l="pt">
+    <h2 class="doc-title">Como jogar</h2>
+    <p>Toque em um tubo para pegar a bolinha de cima e em outro para soltá-la. Ela só cabe em um tubo vazio ou sobre uma bolinha da mesma cor. Quando um tubo fica cheio de uma só cor, ele é fechado com uma rolha de madeira. Feche todos para vencer!</p>
+    <ul class="features">
+      <li><b>Níveis infinitos</b>Dificuldade que cresce aos poucos.</li>
+      <li><b>Níveis especiais</b>Névoa, cadeado, limite de movimentos e chefes.</li>
+      <li><b>Animações caprichadas</b>As bolinhas voam, quicam e as rolhas encaixam com um "pop".</li>
+      <li><b>Recompensas</b>Estrelas, moedas, sequências, conquistas, prêmio diário e desafio diário.</li>
+      <li><b>Rádio por mundo</b>Música própria para cada mundo.</li>
+      <li><b>Acessível</b>Alto contraste, texto grande, símbolos em cada cor e TalkBack.</li>
+      <li><b>Jogo limpo</b>Sem anúncios forçados: só anúncios opcionais com recompensa. Os temas premium também são opcionais.</li>
+      <li><b>9 idiomas</b>Espanhol, inglês, português, francês, alemão, russo, japonês, hindi e indonésio.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Política de privacidade</a><a href="../#contacto">Suporte</a></div>
+  </section>
+  <section data-l="fr">
+    <h2 class="doc-title">Comment jouer</h2>
+    <p>Touche un tube pour prendre la bille du dessus, puis un autre pour la poser. Elle ne va que dans un tube vide ou sur une bille de la même couleur. Quand un tube est rempli d'une seule couleur, il est fermé par un bouchon en bois. Ferme-les tous pour gagner !</p>
+    <ul class="features">
+      <li><b>Niveaux infinis</b>Une difficulté qui augmente petit à petit.</li>
+      <li><b>Niveaux spéciaux</b>Brouillard, cadenas, coups limités et boss.</li>
+      <li><b>Animations soignées</b>Les billes volent, rebondissent et les bouchons se ferment avec un « pop ».</li>
+      <li><b>Récompenses</b>Étoiles, pièces, séries, succès, cadeau quotidien et défi du jour.</li>
+      <li><b>Une radio par monde</b>Une musique pour chaque monde.</li>
+      <li><b>Accessible</b>Contraste élevé, grand texte, symboles sur chaque couleur et TalkBack.</li>
+      <li><b>Jeu honnête</b>Pas de publicités forcées : seulement des publicités récompensées facultatives. Les thèmes premium sont aussi facultatifs.</li>
+      <li><b>9 langues</b>Espagnol, anglais, portugais, français, allemand, russe, japonais, hindi et indonésien.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Politique de confidentialité</a><a href="../#contacto">Assistance</a></div>
+  </section>
+  <section data-l="de">
+    <h2 class="doc-title">So wird gespielt</h2>
+    <p>Tippe auf eine Röhre, um die oberste Kugel zu nehmen, und auf eine andere, um sie abzulegen. Sie passt nur in eine leere Röhre oder auf eine Kugel derselben Farbe. Ist eine Röhre mit nur einer Farbe gefüllt, wird sie mit einem Holzkorken verschlossen. Verschließe alle, um zu gewinnen!</p>
+    <ul class="features">
+      <li><b>Endlose Level</b>Die Schwierigkeit steigt nach und nach.</li>
+      <li><b>Spezial-Level</b>Nebel, Schloss, Zuglimit und Bosse.</li>
+      <li><b>Liebevolle Animationen</b>Die Kugeln fliegen, hüpfen und die Korken schließen mit einem „Plopp“.</li>
+      <li><b>Belohnungen</b>Sterne, Münzen, Serien, Erfolge, tägliches Geschenk und tägliche Herausforderung.</li>
+      <li><b>Radio für jede Welt</b>Eigene Musik für jede Welt.</li>
+      <li><b>Barrierearm</b>Hoher Kontrast, große Schrift, Symbole auf jeder Farbe und TalkBack.</li>
+      <li><b>Faires Spiel</b>Keine erzwungene Werbung: nur freiwillige Werbung mit Belohnung. Premium-Themen sind ebenfalls optional.</li>
+      <li><b>9 Sprachen</b>Spanisch, Englisch, Portugiesisch, Französisch, Deutsch, Russisch, Japanisch, Hindi und Indonesisch.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Datenschutzerklärung</a><a href="../#contacto">Support</a></div>
+  </section>
+  <section data-l="it">
+    <h2 class="doc-title">Come si gioca</h2>
+    <p>Tocca un tubo per prendere la pallina in cima e un altro per lasciarla. Entra solo in un tubo vuoto o sopra una pallina dello stesso colore. Quando un tubo è pieno di un solo colore, si chiude con un tappo di legno. Chiudili tutti per vincere!</p>
+    <ul class="features">
+      <li><b>Livelli infiniti</b>Difficoltà che cresce poco a poco.</li>
+      <li><b>Livelli speciali</b>Nebbia, lucchetto, mosse limitate e boss.</li>
+      <li><b>Animazioni curate</b>Le palline volano, rimbalzano e i tappi si chiudono con un "pop".</li>
+      <li><b>Ricompense</b>Stelle, monete, serie, obiettivi, premio giornaliero e sfida quotidiana.</li>
+      <li><b>Una radio per mondo</b>Musica dedicata per ogni mondo.</li>
+      <li><b>Accessibile</b>Alto contrasto, testo grande, simboli su ogni colore e TalkBack.</li>
+      <li><b>Gioco leale</b>Nessuna pubblicità forzata: solo annunci facoltativi con premio. Anche i temi premium sono facoltativi.</li>
+      <li><b>9 lingue</b>Spagnolo, inglese, portoghese, francese, tedesco, russo, giapponese, hindi e indonesiano.</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">Informativa sulla privacy</a><a href="../#contacto">Assistenza</a></div>
+  </section>
+  <section data-l="ja">
+    <h2 class="doc-title">遊び方</h2>
+    <p>試験管をタップすると一番上のボールを持ち上げ、別の試験管をタップすると置けます。置けるのは空の試験管か、同じ色のボールの上だけ。1色でいっぱいになった試験管は木のコルクで封をされます。すべて封をしたらクリア！</p>
+    <ul class="features">
+      <li><b>無限のレベル</b>少しずつ難しくなります。</li>
+      <li><b>特別なレベル</b>霧、カギ、手数制限、ボス。</li>
+      <li><b>こだわりのアニメーション</b>ボールが飛んで弾み、コルクが「ポン」とはまります。</li>
+      <li><b>ごほうび</b>スター、コイン、連続記録、実績、デイリーギフト、デイリーチャレンジ。</li>
+      <li><b>ワールドごとのラジオ</b>ワールドごとにオリジナル音楽。</li>
+      <li><b>アクセシビリティ</b>高コントラスト、大きな文字、色ごとの記号、TalkBack対応。</li>
+      <li><b>フェアプレイ</b>強制広告なし：報酬付きの任意広告のみ。プレミアムテーマも任意です。</li>
+      <li><b>9言語</b>スペイン語、英語、ポルトガル語、フランス語、ドイツ語、ロシア語、日本語、ヒンディー語、インドネシア語。</li>
+    </ul>
+    <div class="links"><a href="privacidad.html#en">プライバシーポリシー</a><a href="../#contacto">サポート</a></div>
+  </section>
 
   <footer>© 2026 NEXYRA GAMES · <a href="../privacidad/">Privacidad / Privacy</a> · <a href="../licencias/">Licencias / Licenses</a><br>Google Play y el logotipo de Google Play son marcas de Google LLC. / Google Play and the Google Play logo are trademarks of Google LLC.</footer>
 </main>
-<script>
-  document.querySelectorAll("[data-set]").forEach(function (b) {
-    var sync = function () { document.querySelectorAll("[data-set]").forEach(function (x) { x.classList.toggle("on", x.dataset.set === document.documentElement.lang); }); };
-    b.addEventListener("click", function () { document.documentElement.lang = b.dataset.set; history.replaceState(null, "", "?lang=" + b.dataset.set); sync(); });
-    sync();
-  });
-</script>
 </body>
 </html>

@@ -12,20 +12,13 @@
 <meta property="og:image" content="../assets/img/petmath-cover.png">
 <link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/page.css">
-<script>
-  // Idioma: ?lang=es|en, si no el del navegador (español si empieza por "es"; si no, inglés)
-  (function () {
-    var q = new URLSearchParams(location.search).get("lang");
-    var l = q === "es" || q === "en" ? q : (/^es/i.test(navigator.language || "es") ? "es" : "en");
-    document.documentElement.lang = l;
-  })();
-</script>
+<script src="../js/page-lang.js"></script>
 </head>
 <body>
 <main>
   <div class="topbar">
     <a class="brand" href="../"><img src="../assets/img/nexyra-emblem.png" alt="">NEXYRA GAMES</a>
-    <nav class="langs" style="margin:0"><button type="button" data-set="es">ES</button><button type="button" data-set="en">EN</button></nav>
+    <nav class="langs" data-langs style="margin:0" aria-label="Idioma / Language"></nav>
   </div>
 
   <div class="game-hero">
@@ -34,17 +27,22 @@
       <h1>PetMath</h1>
       <p class="tagline" data-l="es">Resuelve puzles de mates y cuida a tu mascota.</p>
       <p class="tagline" data-l="en">Solve math puzzles and look after your pet.</p>
+      <p class="tagline" data-l="pt">Resolva quebra-cabeças de matemática e cuide do seu pet.</p>
+      <p class="tagline" data-l="fr">Résous des puzzles de maths et prends soin de ton animal.</p>
+      <p class="tagline" data-l="de">Löse Mathe-Rätsel und kümmere dich um dein Haustier.</p>
+      <p class="tagline" data-l="it">Risolvi puzzle di matematica e prenditi cura del tuo animaletto.</p>
+      <p class="tagline" data-l="ja">算数パズルを解いて、ペットのお世話をしよう。</p>
       <div class="badges">
-        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span>
-        <span class="badge" data-l="es">Puzle</span><span class="badge" data-l="en">Puzzle</span>
-        <span class="badge" data-l="es">Educativo</span><span class="badge" data-l="en">Educational</span>
-        <span class="badge" data-l="es">Mascotas</span><span class="badge" data-l="en">Pets</span>
-        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span>
+        <span class="badge soon" data-l="es">Próximamente</span><span class="badge soon" data-l="en">Coming soon</span><span class="badge soon" data-l="pt">Em breve</span><span class="badge soon" data-l="fr">Bientôt</span><span class="badge soon" data-l="de">Demnächst</span><span class="badge soon" data-l="it">Prossimamente</span><span class="badge soon" data-l="ja">近日公開</span>
+        <span class="badge" data-l="es">Puzle</span><span class="badge" data-l="en">Puzzle</span><span class="badge" data-l="pt">Quebra-cabeça</span><span class="badge" data-l="fr">Puzzle</span><span class="badge" data-l="de">Puzzle</span><span class="badge" data-l="it">Puzzle</span><span class="badge" data-l="ja">パズル</span>
+        <span class="badge" data-l="es">Educativo</span><span class="badge" data-l="en">Educational</span><span class="badge" data-l="pt">Educativo</span><span class="badge" data-l="fr">Éducatif</span><span class="badge" data-l="de">Lernspiel</span><span class="badge" data-l="it">Educativo</span><span class="badge" data-l="ja">知育</span>
+        <span class="badge" data-l="es">Mascotas</span><span class="badge" data-l="en">Pets</span><span class="badge" data-l="pt">Pets</span><span class="badge" data-l="fr">Animaux</span><span class="badge" data-l="de">Haustiere</span><span class="badge" data-l="it">Animali</span><span class="badge" data-l="ja">ペット</span>
+        <span class="badge" data-l="es">Sin conexión</span><span class="badge" data-l="en">Offline</span><span class="badge" data-l="pt">Offline</span><span class="badge" data-l="fr">Hors ligne</span><span class="badge" data-l="de">Offline</span><span class="badge" data-l="it">Offline</span><span class="badge" data-l="ja">オフライン</span>
       </div>
       <!-- Al publicar: añade href con el enlace de Google Play, quita aria-disabled y añade la clase "live" -->
       <a class="play" aria-disabled="true">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.6v12.8c0 .8.9 1.3 1.6.9l10-6.4c.6-.4.6-1.3 0-1.7l-10-6.4C8.9 4.3 8 4.8 8 5.6Z"/></svg>
-        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><b>Google Play</b></span>
+        <span><small data-l="es">Muy pronto en</small><small data-l="en">Coming soon to</small><small data-l="pt">Em breve no</small><small data-l="fr">Bientôt sur</small><small data-l="de">Demnächst bei</small><small data-l="it">Presto su</small><small data-l="ja">近日公開</small><b>Google Play</b></span>
       </a>
     </div>
   </div>
@@ -73,15 +71,68 @@
     </ul>
     <div class="links"><a href="../?lang=en#actualizaciones">What's new</a><a href="../?lang=en#contacto">Support</a></div>
   </section>
+  <section data-l="pt">
+    <h2 class="doc-title">Como jogar</h2>
+    <p>Resolva quebra-cabeças de matemática, cuide do seu pet e decore o quarto dele. Feito para crianças: sem pressão, sem anúncios invasivos e 100% offline.</p>
+    <ul class="features">
+      <li><b>Quebra-cabeças de matemática</b>Desafios que crescem aos poucos.</li>
+      <li><b>Seu pet</b>Cuide dele enquanto aprende.</li>
+      <li><b>O quarto dele</b>Decore com o que você ganha resolvendo quebra-cabeças.</li>
+      <li><b>Sem pressão</b>Sem pressa nem castigos: aprende-se brincando.</li>
+      <li><b>Offline</b>Funciona sem internet, em casa ou em viagem.</li>
+    </ul>
+    <div class="links"><a href="../#actualizaciones">Novidades</a><a href="../#contacto">Suporte</a></div>
+  </section>
+  <section data-l="fr">
+    <h2 class="doc-title">Comment jouer</h2>
+    <p>Résolvez des puzzles mathématiques, prenez soin de votre animal et décorez sa chambre. Conçu pour les enfants : sans pression, sans publicité intrusive et 100 % hors ligne.</p>
+    <ul class="features">
+      <li><b>Puzzles de maths</b>Des défis qui augmentent petit à petit.</li>
+      <li><b>Ton animal</b>Prends-en soin pendant que tu apprends.</li>
+      <li><b>Sa chambre</b>Décore-la avec ce que tu gagnes en résolvant des puzzles.</li>
+      <li><b>Sans pression</b>Ni précipitation ni punition : on apprend en jouant.</li>
+      <li><b>Hors ligne</b>Fonctionne sans internet, à la maison ou en voyage.</li>
+    </ul>
+    <div class="links"><a href="../#actualizaciones">Nouveautés</a><a href="../#contacto">Assistance</a></div>
+  </section>
+  <section data-l="de">
+    <h2 class="doc-title">So wird gespielt</h2>
+    <p>Löse Mathe-Rätsel, kümmere dich um dein Haustier und richte sein Zimmer ein. Für Kinder gemacht: kein Druck, keine aufdringliche Werbung und 100 % offline.</p>
+    <ul class="features">
+      <li><b>Mathe-Rätsel</b>Herausforderungen, die nach und nach schwieriger werden.</li>
+      <li><b>Dein Haustier</b>Kümmere dich darum, während du lernst.</li>
+      <li><b>Sein Zimmer</b>Richte es mit dem ein, was du beim Rätseln gewinnst.</li>
+      <li><b>Ohne Druck</b>Keine Eile, keine Strafen: spielend lernen.</li>
+      <li><b>Offline</b>Funktioniert ohne Internet, zu Hause oder unterwegs.</li>
+    </ul>
+    <div class="links"><a href="../#actualizaciones">Neuigkeiten</a><a href="../#contacto">Support</a></div>
+  </section>
+  <section data-l="it">
+    <h2 class="doc-title">Come si gioca</h2>
+    <p>Risolvi puzzle matematici, prenditi cura del tuo animaletto e decora la sua stanza. Pensato per i più piccoli: nessuna pressione, nessuna pubblicità invadente e 100% offline.</p>
+    <ul class="features">
+      <li><b>Puzzle di matematica</b>Sfide che crescono poco a poco.</li>
+      <li><b>Il tuo animaletto</b>Prenditene cura mentre impari.</li>
+      <li><b>La sua stanza</b>Decorala con quello che vinci risolvendo i puzzle.</li>
+      <li><b>Senza pressione</b>Niente fretta né punizioni: si impara giocando.</li>
+      <li><b>Offline</b>Funziona senza internet, a casa o in viaggio.</li>
+    </ul>
+    <div class="links"><a href="../#actualizaciones">Novità</a><a href="../#contacto">Assistenza</a></div>
+  </section>
+  <section data-l="ja">
+    <h2 class="doc-title">遊び方</h2>
+    <p>算数パズルを解いて、ペットのお世話をし、お部屋を飾ろう。お子さま向けに設計：プレッシャーなし、邪魔な広告なし、完全オフライン。</p>
+    <ul class="features">
+      <li><b>算数パズル</b>少しずつ難しくなるチャレンジ。</li>
+      <li><b>あなたのペット</b>学びながらお世話しよう。</li>
+      <li><b>ペットのお部屋</b>パズルで手に入れたもので飾ろう。</li>
+      <li><b>プレッシャーなし</b>急かさない、罰もない。遊びながら学べます。</li>
+      <li><b>オフライン</b>インターネットなしで、家でもおでかけ先でも。</li>
+    </ul>
+    <div class="links"><a href="../#actualizaciones">最新情報</a><a href="../#contacto">サポート</a></div>
+  </section>
 
   <footer>© 2026 NEXYRA GAMES · <a href="../privacidad/">Privacidad / Privacy</a> · <a href="../licencias/">Licencias / Licenses</a><br>Google Play y el logotipo de Google Play son marcas de Google LLC. / Google Play and the Google Play logo are trademarks of Google LLC.</footer>
 </main>
-<script>
-  document.querySelectorAll("[data-set]").forEach(function (b) {
-    var sync = function () { document.querySelectorAll("[data-set]").forEach(function (x) { x.classList.toggle("on", x.dataset.set === document.documentElement.lang); }); };
-    b.addEventListener("click", function () { document.documentElement.lang = b.dataset.set; history.replaceState(null, "", "?lang=" + b.dataset.set); sync(); });
-    sync();
-  });
-</script>
 </body>
 </html>

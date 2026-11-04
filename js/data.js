@@ -125,6 +125,7 @@ window.NEXYRA = {
       },
       cover: "assets/img/petmath-cover.png",
       page: "petmath/",
+      privacy: "petmath/privacidad.html",
       playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
       status: "soon", // "soon" = aún no publicado (insignia «Próximamente»); "online" al publicar
       tag: "workingTitle", // nombre provisional; cámbialo por "new" cuando tenga nombre definitivo

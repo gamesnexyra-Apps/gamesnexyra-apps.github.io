@@ -19,7 +19,7 @@ window.NEXYRA = {
   config: {
     // Perfil de desarrollador en Google Play. Cuando tengas tu ID, usa:
     // "https://play.google.com/store/apps/dev?id=TU_ID_DE_DESARROLLADOR"
-    playStoreProfile: "https://play.google.com/store/search?q=NEXYRA%20GAMES&c=apps",
+    playStoreProfile: "https://play.google.com/store/apps/developer?id=NEXYRA+GAMES",
 
     // Correo de soporte (se usa si no configuras formEndpoint)
     supportEmail: "gamesnexyra@gmail.com",
@@ -154,9 +154,9 @@ window.NEXYRA = {
       cover: "assets/img/pintipop-cover.png",
       page: "pintipop/",
       privacy: "pintipop/privacidad.html",
-      playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
-      status: "soon", // "soon" = aún no publicado (insignia «Próximamente»); "online" al publicar
-      tag: "inDev", // cámbialo por "new" al publicar
+      playUrl: "https://play.google.com/store/apps/details?id=com.pintipop.app",
+      status: "online", // publicado en Google Play
+      tag: "new",
     },
   ],
 

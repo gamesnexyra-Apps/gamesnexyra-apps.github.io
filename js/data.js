@@ -69,8 +69,8 @@ window.NEXYRA = {
       color: "#8b5cf6",
       page: "bolitas/",
       privacy: "bolitas/privacidad.html",
-      playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
-      status: "soon", // "online" al publicar
+      playUrl: "https://play.google.com/store/apps/details?id=com.bolitas.juego",
+      status: "online",
       tag: "new",
     },
     {
@@ -237,9 +237,8 @@ window.NEXYRA = {
     {
       game: "Bolitas",
       version: "v1.0",
-      date: "",
-      state: "inDev",
-      progress: 90,
+      date: "2026-11-11",
+      state: "released",
       items: [
         { type: "feature", text: {
           es: "Lanzamiento en Google Play",

@@ -98,8 +98,8 @@ window.NEXYRA = {
       color: "#3b2a8c",
       page: "nexyra-sudoku/",
       privacy: "nexyra-sudoku/privacidad.html",
-      playUrl: "", // vacío = botón «Muy pronto»; pon el enlace de Google Play al publicar
-      status: "soon", // "online" al publicar
+      playUrl: "https://play.google.com/store/apps/details?id=com.nexyra.sudoku",
+      status: "online",
       tag: "new",
     },
     {
@@ -168,18 +168,17 @@ window.NEXYRA = {
     {
       game: "NEXYRA Sudoku",
       version: "v1.0",
-      date: "",
-      state: "inDev",
-      progress: 90,
+      date: "2026-11-11",
+      state: "released",
       items: [
         { type: "feature", text: {
-          es: "Lanzamiento en Google Play (ahora en prueba cerrada)",
-          en: "Launch on Google Play (now in closed testing)",
-          pt: "Lançamento no Google Play (agora em teste fechado)",
-          fr: "Sortie sur Google Play (actuellement en test fermé)",
-          de: "Start bei Google Play (jetzt im geschlossenen Test)",
-          it: "Lancio su Google Play (ora in test chiuso)",
-          ja: "Google Playでリリース(現在クローズドテスト中)",
+          es: "Lanzamiento en Google Play",
+          en: "Launch on Google Play",
+          pt: "Lançamento no Google Play",
+          fr: "Sortie sur Google Play",
+          de: "Start bei Google Play",
+          it: "Lancio su Google Play",
+          ja: "Google Playでリリース",
         } },
         { type: "content", text: {
           es: "Dos reinos, Emerald Wilds y Crystal Moon, con 80 niveles, criaturas y reliquias",
